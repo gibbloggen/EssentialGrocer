@@ -5,9 +5,196 @@
     xmlns:local="using:EssentialGrocer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:EssentialGrocer.Model"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="GroceryListDataTemplate" x:DataType="data:Grocery">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="{x:Bind  Description}" HorizontalAlignment="Left" FontSize="22" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <!-- x:DataType="data:Grocery"-->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="Auto" Width="Auto">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"  />
+            <RowDefinition Height="*"   />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+
+        <RelativePanel Grid.Row="0" Grid.ColumnSpan="3" Background="Aquamarine">
+            <Button Name="HamburgerButton" 
+                    RelativePanel.AlignLeftWithPanel="True"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="36" 
+                    Content="&#xE700;" 
+                    Click="HamburgerButton_Click"
+                    />
+
+            <TextBlock Grid.Column="0"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                   Grid.ColumnSpan="2" Text="Grocery List" FontSize="32" />
+
+            <Button Name="CategoryButton" 
+                    RelativePanel.AlignRightWithPanel="True"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="36" 
+                    Content="&#xE700;" 
+                    Click="CategoryButton_Click"
+                    />
+
+        </RelativePanel>
+
+        <SplitView Grid.Row="1" 
+                   Grid.RowSpan="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Name="MySplitView"
+                   DisplayMode="CompactOverlay"
+                   
+                   CompactPaneLength="0"
+                   >
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single" 
+                         Tapped="ListBox_Tapped">
+
+                    <ListBoxItem Name="NewList">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE80F;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">New</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="OpenList">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Open</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="SaveList">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Save</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="EmailList">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Email</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="PrintList">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Print</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+            <SplitView.Content>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"  />
+                        <RowDefinition Height="*"   />
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Grid.Row="0"    Grid.Column="0"  Grid.RowSpan="1" Fill="Coral" />
+
+                    <Rectangle Grid.Row="0"    Grid.Column="1"  Grid.RowSpan="1" Fill="DarkCyan" />
+
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="0"
+                   Style="{StaticResource    TitleTextBlockStyle }"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   Grid.ColumnSpan="1"> 
+            To Get At Store
+
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="0"
+                   Style="{StaticResource TitleTextBlockStyle}"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Grid.ColumnSpan="1">
+            Do We Need it?
+
+                    </TextBlock>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <ListView ItemsSource="{x:Bind GroceriesToGet, Mode=OneWay}"
+                   Name="GroceryStoreToGetList"
+                  ItemClick="GroceryStoreToGetList_ItemClick"
+                  IsItemClickEnabled="True" 
+                  ItemTemplate="{StaticResource GroceryListDataTemplate}">
+                        </ListView>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <ListView ItemsSource="{x:Bind Groceries,Mode=OneWay}" 
+                  Name="GroceryStore"
+                  ItemClick="GroceryStore_ItemClick"
+                  IsItemClickEnabled="True" 
+                  ItemTemplate="{StaticResource GroceryListDataTemplate}">
+                        </ListView>
+                    </Grid>
+
+                </Grid>
+            </SplitView.Content>
+
+        </SplitView>
+
+        <SplitView Grid.Row="1" 
+                   Grid.RowSpan="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Name="CategorySplitView"
+                   DisplayMode="CompactOverlay"
+                   CompactPaneLength="0" 
+                    PanePlacement="Right" 
+                   >
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single" 
+                         Tapped="CategoryListBox_Tapped">
+
+                    <ListBoxItem Name="Produce">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE80F;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Produce</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="Bakery">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Bakery</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="Dairy">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Dairy</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+
+
+        </SplitView>
+
+
+
+
+
+
+
+
 
     </Grid>
 </Page>

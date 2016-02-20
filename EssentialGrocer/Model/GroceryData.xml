@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SuperMarket>
+   <product>
+      <Description>Strawberries</Description>
+      <UPC_Code>1111111</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+    <product>
+      <Description>Bannanas</Description>
+      <UPC_Code>1111112</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+    <product>
+      <Description>Broccoli Rabe</Description>
+      <UPC_Code>11111113</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+    <product>
+      <Description>Savoy Cabbage</Description>
+      <UPC_Code>1111114</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+    <product>
+      <Description>Mushrooms</Description>
+      <UPC_Code>1111115</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+    <product>
+      <Description>Green Onions</Description>
+      <UPC_Code>1111116</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+    <product>
+      <Description>Artichokes</Description>
+      <UPC_Code>11111117</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+    <product>
+      <Description>Cantaloupe</Description>
+      <UPC_Code>1111118</UPC_Code>
+      <Isle>Produce</Isle>
+    </product>
+  <product>
+    <Description>WW Bread</Description>
+    <UPC_Code>1111119</UPC_Code>
+  <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>English Muffins</Description>
+    <UPC_Code>1111120</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Round Italian</Description>
+    <UPC_Code>11111121</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Cheese Bun</Description>
+    <UPC_Code>1111122</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Chocolate Doughnuts</Description>
+    <UPC_Code>1111123</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Hamburger Rolls</Description>
+    <UPC_Code>1111124</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Kaiser Rolls</Description>
+    <UPC_Code>11111125</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Hot Dog Rolls</Description>
+    <UPC_Code>1111126</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Skim Milk</Description>
+    <UPC_Code>1111127</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Heavy Cream</Description>
+    <UPC_Code>1111128</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Sour Cream</Description>
+    <UPC_Code>11111129</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>HalfnHalf</Description>
+    <UPC_Code>1111130</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Yogurt</Description>
+    <UPC_Code>1111131</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Cottage Cheese</Description>
+    <UPC_Code>1111132</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Orange Juice</Description>
+    <UPC_Code>11111133</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Sharp Cheddar</Description>
+    <UPC_Code>1111134</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+</SuperMarket>
