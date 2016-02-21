@@ -31,7 +31,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.Storage;
@@ -65,7 +64,8 @@ namespace EssentialGrocer.Model
 
     public class GroceryManager
     {
-
+        //This is a brute force method of creating xml file to save on the system.
+        //Can probably be done more Elegantly, but it works.
         public void GetXMLForSaving(ObservableCollection<Grocery> GatherGroceries, XDocument Saviour)
         {
 
@@ -85,6 +85,7 @@ namespace EssentialGrocer.Model
             return;
         }
 
+        // This function was just used for development, will be deleted in future versions.
         public static List<Grocery> GetGroceries()
         {
             var Groceries = new List<Grocery>();
@@ -99,6 +100,10 @@ namespace EssentialGrocer.Model
         }
 
 
+
+        // This procedure orders the main grocery list in such a way that it works with the various filters.
+        // The sort is by isle and then by product alpabetically.
+
         public async static void GetGroceriesByAisle(string IsleFor, ObservableCollection<Grocery> observableGroceries)
         {
             if (observableGroceries.Count != 0) observableGroceries.Clear();
@@ -106,12 +111,12 @@ namespace EssentialGrocer.Model
 
             Stream jc = await fd.OpenStreamForReadAsync();
 
-            XDocument merde = XDocument.Load(jc);
-            //XDocument merde =  XDocument.Load("GroceryData.xml");
+            XDocument GrocXML = XDocument.Load(jc);
+            //XDocument GrocXML =  XDocument.Load("GroceryData.xml");
 
             var j = new ObservableCollection<Grocery>();
 
-            var q = from b in merde.Descendants("product")
+            var q = from b in GrocXML.Descendants("product")
                     select new
                     {
                         UPC_Code = (string)b.Element("UPC_Code").Value,
@@ -130,38 +135,41 @@ namespace EssentialGrocer.Model
 
         }
 
+        //this is just for testing, will be deleted in future releases.
         public string getJ()
         {
-            XDocument merde = XDocument.Load(@".\Models\GroceryData.xml");
-            return merde.ToString();
+            XDocument GrocXML = XDocument.Load(@".\Models\GroceryData.xml");
+            return GrocXML.ToString();
         }
+
+      
+        
+        // This routine appends the xml file to the existing grocery list, so that you can add either recipe lists, or 
+        // a list that is one of your standards.
+
+        // It parses traverses the file and puts it in a long string, then XDocument.Parse turns it into xml
+
         public static async void GetGroceriesFromSavedList(StorageFile TheAddition, ObservableCollection<Grocery> ObservableGroceries, bool Append)
-
         {
-
             Stream w = await TheAddition.OpenStreamForReadAsync();
-
+            
             char line;
             string anything = "";
             for (int i = 0; i < w.Length; i++)
             {
                 line = (char)w.ReadByte();
                 anything += line;
-            }
+            };
 
 
-;
-
-
-
-            XDocument merde = XDocument.Parse(anything);
+            XDocument GrocXML = XDocument.Parse(anything);
 
 
             if (Append) { }
             else {
                 ObservableGroceries = new ObservableCollection<Grocery>();
             }
-            var q = from b in merde.Descendants("Product")
+            var q = from b in GrocXML.Descendants("Product")
                     select new
                     {
                         UPC_Code = (string)b.Element("UPC_Code").Value,
@@ -181,6 +189,8 @@ namespace EssentialGrocer.Model
 
         }
 
+
+        // This was a paste from somewhere.  I believe it is going to be another delete,,,
         public static async Task<byte[]> ReadFile(StorageFile file)
 
         {
@@ -211,17 +221,20 @@ namespace EssentialGrocer.Model
 
         }
 
+
+        // This works, but is dependent on the file being in Model folder of the bin.
+        // This is going to be updated to have this list an others in the app folder for the user.
         public static ObservableCollection<Grocery> GetGroceriesFromXML()
 
         {
 
 
-            XDocument merde = XDocument.Load(@".\Models\GroceryData.xml");
+            XDocument GrocXML = XDocument.Load(@".\Models\GroceryData.xml");
 
 
             var j = new ObservableCollection<Grocery>();
 
-            var q = from b in merde.Descendants("product")
+            var q = from b in GrocXML.Descendants("product")
                     select new
                     {
                         UPC_Code = (string)b.Element("UPC_Code").Value,
@@ -238,6 +251,8 @@ namespace EssentialGrocer.Model
 
         }
 
+
+        // I think this was just for testing, will delete in next cleanup.
         public class GroceryManagerObservable
         {
 
