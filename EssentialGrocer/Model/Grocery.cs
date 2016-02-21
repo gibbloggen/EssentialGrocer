@@ -106,10 +106,46 @@ namespace EssentialGrocer.Model
 
         public async static void GetGroceriesByAisle(string IsleFor, ObservableCollection<Grocery> observableGroceries)
         {
+    
+            //his opening bit is to make sure that the GroceryData.xml file is in the Local State folder
+            //in the users profile.  During Development the path is c:/users/gibbl/appdata/local/Packages/<gibberish>/LocalState
+            //If it isn't in that folder, then it copies a new one from the source code.
+            Windows.Storage.StorageFile GroceryData = null ;
+            
             if (observableGroceries.Count != 0) observableGroceries.Clear();
-            Windows.Storage.StorageFile fd = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("GroceryData.xml");
 
-            Stream jc = await fd.OpenStreamForReadAsync();
+            try
+            {
+                GroceryData = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("GroceryData.xml");
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open");
+                try
+                {
+                  string fileName = "GroceryData.xml";
+                    string sourcePath = @".\Model";
+                    string targetPath = ApplicationData.Current.LocalFolder.Path;
+                    string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+                    if (!System.IO.Directory.Exists(targetPath))
+                    {
+                        System.Diagnostics.Debug.WriteLine("No Path at local folder" + targetPath);
+                        
+                    }
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    GroceryData = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("GroceryData.xml");
+                 
+                }
+                catch {
+                    System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing reset");
+                        
+                        }
+            }
+
+           
+               
+            Stream jc = await GroceryData.OpenStreamForReadAsync();
 
             XDocument GrocXML = XDocument.Load(jc);
             //XDocument GrocXML =  XDocument.Load("GroceryData.xml");
@@ -138,7 +174,7 @@ namespace EssentialGrocer.Model
         //this is just for testing, will be deleted in future releases.
         public string getJ()
         {
-            XDocument GrocXML = XDocument.Load(@".\Models\GroceryData.xml");
+            XDocument GrocXML = XDocument.Load(@".\Model\GroceryData.xml");
             return GrocXML.ToString();
         }
 
@@ -229,7 +265,7 @@ namespace EssentialGrocer.Model
         {
 
 
-            XDocument GrocXML = XDocument.Load(@".\Models\GroceryData.xml");
+            XDocument GrocXML = XDocument.Load(@".\Model\GroceryData.xml");
 
 
             var j = new ObservableCollection<Grocery>();

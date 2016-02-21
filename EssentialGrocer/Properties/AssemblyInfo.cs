@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("John Leone, gibbloggen@gmail.com")]
 [assembly: AssemblyProduct("EssentialGrocer")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright (c) <2016> <John Leone, gibbloggen@gmail.com>")]
+[assembly: AssemblyTrademark("MIT License")]
 [assembly: AssemblyCulture("")]
 
 // Version information for an assembly consists of the following four values:
