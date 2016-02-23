@@ -163,17 +163,23 @@
             <SplitView.Pane>
                 <ListBox SelectionMode="Single" 
                          Tapped="CategoryListBox_Tapped">
-
-                    <ListBoxItem Name="Produce">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE80F;" />
-                            <TextBlock FontSize="24" Margin="20,0,0,0">Produce</TextBlock>
-                        </StackPanel>
-                    </ListBoxItem>
+                    
                     <ListBoxItem Name="Bakery">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
                             <TextBlock FontSize="24" Margin="20,0,0,0">Bakery</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="Beverages">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Beverages</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="Cheese">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Cheese</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="Dairy">
@@ -182,6 +188,39 @@
                             <TextBlock FontSize="24" Margin="20,0,0,0">Dairy</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
+                    <ListBoxItem Name="Deli">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Deli</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="Fish">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Fish</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="Meat">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Meat</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="Produce">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Produce</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                   
+                    
+                   
+                
+                   
+                   
                 </ListBox>
             </SplitView.Pane>
 

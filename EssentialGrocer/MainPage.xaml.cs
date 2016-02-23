@@ -197,7 +197,33 @@ namespace EssentialGrocer
                 CategorySplitView.IsPaneOpen = false;
 
             }
+            else if (Beverages.IsSelected)
+            {
+                GroceryManager.GetGroceriesByAisle("Beverages", Groceries);
+                CategorySplitView.IsPaneOpen = false;
+            }
+            else if (Cheese.IsSelected)
+            {
+                GroceryManager.GetGroceriesByAisle("Cheese", Groceries);
+                CategorySplitView.IsPaneOpen = false;
 
+            }
+            else if (Deli.IsSelected)
+            {
+                GroceryManager.GetGroceriesByAisle("Deli", Groceries);
+                CategorySplitView.IsPaneOpen = false;
+            }
+            else if (Fish.IsSelected)
+            {
+                GroceryManager.GetGroceriesByAisle("Fish", Groceries);
+                CategorySplitView.IsPaneOpen = false;
+
+            } else if (Meat.IsSelected)
+            {
+                GroceryManager.GetGroceriesByAisle("Meat", Groceries);
+                CategorySplitView.IsPaneOpen = false;
+            }
+         
         }
     }
 

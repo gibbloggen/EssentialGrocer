@@ -1,123 +1,679 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<SuperMarket>
-   <product>
-      <Description>Strawberries</Description>
-      <UPC_Code>1111111</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
-    <product>
-      <Description>Bannanas</Description>
-      <UPC_Code>1111112</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
-    <product>
-      <Description>Broccoli Rabe</Description>
-      <UPC_Code>11111113</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
-    <product>
-      <Description>Savoy Cabbage</Description>
-      <UPC_Code>1111114</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
-    <product>
-      <Description>Mushrooms</Description>
-      <UPC_Code>1111115</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
-    <product>
-      <Description>Green Onions</Description>
-      <UPC_Code>1111116</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
-    <product>
-      <Description>Artichokes</Description>
-      <UPC_Code>11111117</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
-    <product>
-      <Description>Cantaloupe</Description>
-      <UPC_Code>1111118</UPC_Code>
-      <Isle>Produce</Isle>
-    </product>
+﻿<?xml version="1.0" encoding="utf-8" ?>	
+<SuperMarket>		
+  <product>		 
+    <Description>Strawberries</Description>		    
+<UPC_Code>11111114</UPC_Code>		
+ <Isle>Produce</Isle>
+  </product>
   <product>
+    <Description>Bannanas</Description>
+<UPC_Code>11111119</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Broccoli Rabe</Description>
+<UPC_Code>11111124</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Savoy Cabbage</Description>
+<UPC_Code>11111129</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Mushrooms</Description>
+<UPC_Code>11111134</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Green Onions</Description>
+<UPC_Code>11111139</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Artichokes</Description>
+<UPC_Code>11111144</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Cantaloupe</Description>
+<UPC_Code>11111149</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Iceburg Lettuce</Description>
+<UPC_Code>11111154</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Romaine Lettuce</Description>
+<UPC_Code>11111159</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Broccoli</Description>
+<UPC_Code>11111164</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Apples</Description>
+<UPC_Code>11111169</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Oranges</Description>
+<UPC_Code>11111174</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Grapefruit</Description>
+<UPC_Code>11111179</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Tomatoes</Description>
+<UPC_Code>11111184</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Spinach</Description>
+<UPC_Code>11111189</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Cauliflower</Description>
+<UPC_Code>11111194</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+  <product>
+    <Description>Peppers</Description>
+<UPC_Code>11111199</UPC_Code>
+    <Isle>Produce</Isle>
+  </product>
+ <product>
     <Description>WW Bread</Description>
-    <UPC_Code>1111119</UPC_Code>
-  <Isle>Bakery</Isle>
+<UPC_Code>11111204</UPC_Code>
+    <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>English Muffins</Description>
-    <UPC_Code>1111120</UPC_Code>
+<UPC_Code>11111209</UPC_Code>
     <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>Round Italian</Description>
-    <UPC_Code>11111121</UPC_Code>
+<UPC_Code>11111214</UPC_Code>
     <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>Cheese Bun</Description>
-    <UPC_Code>1111122</UPC_Code>
+<UPC_Code>11111219</UPC_Code>
     <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>Chocolate Doughnuts</Description>
-    <UPC_Code>1111123</UPC_Code>
+<UPC_Code>11111224</UPC_Code>
     <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>Hamburger Rolls</Description>
-    <UPC_Code>1111124</UPC_Code>
+<UPC_Code>11111229</UPC_Code>
     <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>Kaiser Rolls</Description>
-    <UPC_Code>11111125</UPC_Code>
+<UPC_Code>11111234</UPC_Code>
     <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>Hot Dog Rolls</Description>
-    <UPC_Code>1111126</UPC_Code>
+<UPC_Code>11111239</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Cream Puffs</Description>
+<UPC_Code>11111244</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Bagette</Description>
+<UPC_Code>11111249</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Chocolate Cake</Description>
+<UPC_Code>11111254</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Cheese Cake</Description>
+<UPC_Code>11111259</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Pasteries</Description>
+<UPC_Code>11111264</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Hoagie Rolls</Description>
+<UPC_Code>11111269</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>White Bread</Description>
+<UPC_Code>11111274</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Pumpernickel Bread</Description>
+<UPC_Code>11111279</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Rye Bread</Description>
+<UPC_Code>11111284</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Datenut Loaf</Description>
+<UPC_Code>11111289</UPC_Code>
+    <Isle>Bakery</Isle>
+  </product>
+  <product>
+    <Description>Jelly Doughnuts</Description>
+<UPC_Code>11111294</UPC_Code>
     <Isle>Bakery</Isle>
   </product>
   <product>
     <Description>Skim Milk</Description>
-    <UPC_Code>1111127</UPC_Code>
+<UPC_Code>11111299</UPC_Code>
     <Isle>Dairy</Isle>
   </product>
   <product>
     <Description>Heavy Cream</Description>
-    <UPC_Code>1111128</UPC_Code>
+<UPC_Code>11111304</UPC_Code>
     <Isle>Dairy</Isle>
   </product>
   <product>
     <Description>Sour Cream</Description>
-    <UPC_Code>11111129</UPC_Code>
+<UPC_Code>11111309</UPC_Code>
     <Isle>Dairy</Isle>
   </product>
   <product>
     <Description>HalfnHalf</Description>
-    <UPC_Code>1111130</UPC_Code>
+<UPC_Code>11111314</UPC_Code>
     <Isle>Dairy</Isle>
   </product>
   <product>
     <Description>Yogurt</Description>
-    <UPC_Code>1111131</UPC_Code>
+<UPC_Code>11111319</UPC_Code>
     <Isle>Dairy</Isle>
   </product>
   <product>
     <Description>Cottage Cheese</Description>
-    <UPC_Code>1111132</UPC_Code>
+<UPC_Code>11111324</UPC_Code>
     <Isle>Dairy</Isle>
+  </product>
+    <product>
+    <Description>2% Milk</Description>
+<UPC_Code>11111340</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>1% Milk</Description>
+<UPC_Code>11111345</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Whole Milk</Description>
+<UPC_Code>11111330</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Cream Cheese</Description>
+<UPC_Code>11111335</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+
+  <product>
+    <Description>Greek Yogurt</Description>
+<UPC_Code>11111350</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+  <product>
+    <Description>Eggs</Description>
+<UPC_Code>11111355</UPC_Code>
+    <Isle>Dairy</Isle>
+  </product>
+
+  <product>
+    <Description>Seltzer</Description>
+<UPC_Code>11111361</UPC_Code>
+    <Isle>Beverages</Isle>
+  </product>
+  <product>
+    <Description>Cola</Description>
+<UPC_Code>11111366</UPC_Code>
+    <Isle>Beverages</Isle>
+  </product>
+  <product>
+    <Description>Other Soda</Description>
+<UPC_Code>11111371</UPC_Code>
+    <Isle>Beverages</Isle>
+  </product>
+  <product>
+    <Description>Sports Drink</Description>
+<UPC_Code>11111376</UPC_Code>
+    <Isle>Beverages</Isle>
+  </product>
+  <product>
+    <Description>Apple Juice</Description>
+<UPC_Code>11111381</UPC_Code>
+    <Isle>Beverages</Isle>
   </product>
   <product>
     <Description>Orange Juice</Description>
-    <UPC_Code>11111133</UPC_Code>
-    <Isle>Dairy</Isle>
+<UPC_Code>11111386</UPC_Code>
+    <Isle>Beverages</Isle>
   </product>
   <product>
-    <Description>Sharp Cheddar</Description>
-    <UPC_Code>1111134</UPC_Code>
-    <Isle>Dairy</Isle>
+    <Description>Beer</Description>
+<UPC_Code>11111391</UPC_Code>
+    <Isle>Beverages</Isle>
   </product>
+  <product>
+    <Description>Wine</Description>
+<UPC_Code>11111396</UPC_Code>
+    <Isle>Beverages</Isle>
+  </product>
+  <product>
+    <Description>Other Juice</Description>
+<UPC_Code>11111401</UPC_Code>
+    <Isle>Beverages</Isle>
+  </product>
+   <product>
+    <Description>Sharp Cheddar</Description>
+<UPC_Code>11111487</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Peccorino Romano</Description>
+<UPC_Code>11111492</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+  <product>
+    <Description>Brie</Description>
+<UPC_Code>11111497</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+  <product>
+    <Description>Provolone</Description>
+<UPC_Code>11111502</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+  <product>
+    <Description>Fresh Mozzarella</Description>
+<UPC_Code>11111507</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+  <product>
+    <Description>Ricotta</Description>
+<UPC_Code>11111512</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+  <product>
+    <Description>Mild Cheddar</Description>
+<UPC_Code>11111517</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+  <product>
+    <Description>Blue Cheese</Description>
+<UPC_Code>11111522</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+  <product>
+    <Description>Swiss Cheese</Description>
+<UPC_Code>11111527</UPC_Code>
+    <Isle>Cheese</Isle>
+  </product>
+
+  <product>
+    <Description>Roast Beef</Description>
+<UPC_Code>11111534</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Pastrami</Description>
+<UPC_Code>11111539</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Chicke Breast</Description>
+<UPC_Code>11111544</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Turkey Breast</Description>
+<UPC_Code>11111549</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Bologna</Description>
+<UPC_Code>11111554</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Hot Dogs</Description>
+<UPC_Code>11111559</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Dried Sausage</Description>
+<UPC_Code>11111564</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Potato Salad</Description>
+<UPC_Code>11111569</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Macaroni Salad</Description>
+<UPC_Code>11111574</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+
+  <product>
+    <Description>Prociutto</Description>
+<UPC_Code>11111580</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Subresada</Description>
+<UPC_Code>11111585</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Marinated Mushrooms</Description>
+<UPC_Code>11111590</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Roasted Peppers</Description>
+<UPC_Code>11111595</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Black Olives</Description>
+<UPC_Code>11111600</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Green Olives</Description>
+<UPC_Code>11111605</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Dill Pickles</Description>
+<UPC_Code>11111610</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>half Sour Pickles</Description>
+<UPC_Code>11111615</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+  <product>
+    <Description>Corned Beef</Description>
+<UPC_Code>11111620</UPC_Code>
+    <Isle>Deli</Isle>
+  </product>
+
+  <product>
+    <Description>Roast Beef</Description>
+<UPC_Code>11111627</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Bottom Round</Description>
+<UPC_Code>11111632</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Top Round</Description>
+<UPC_Code>11111637</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>London Broil</Description>
+<UPC_Code>11111642</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Sirloin</Description>
+<UPC_Code>11111647</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Skirt Steak</Description>
+<UPC_Code>11111652</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chopped Meat</Description>
+<UPC_Code>11111657</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Rib Eye</Description>
+<UPC_Code>11111662</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chopped Pork</Description>
+<UPC_Code>11111667</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+
+  <product>
+    <Description>Chopped Turkey</Description>
+<UPC_Code>11111673</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chopped Chicken</Description>
+<UPC_Code>11111678</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Sausage</Description>
+<UPC_Code>11111683</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Pork Chops</Description>
+<UPC_Code>11111688</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Pork Ribs</Description>
+<UPC_Code>11111693</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Pork Shoulder</Description>
+<UPC_Code>11111698</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Pork Butt</Description>
+<UPC_Code>11111703</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Pork Cutlet</Description>
+<UPC_Code>11111708</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chicken Cutlet</Description>
+<UPC_Code>11111713</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+
+  <product>
+    <Description>Chicke Thighs</Description>
+<UPC_Code>11111720</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chicken Roaster</Description>
+<UPC_Code>11111725</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chicken Fryer</Description>
+<UPC_Code>11111730</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chicken Breasts</Description>
+<UPC_Code>11111735</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Chicken Legs</Description>
+<UPC_Code>11111740</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Porterhouse Steak</Description>
+<UPC_Code>11111745</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Whole Turkey</Description>
+<UPC_Code>11111750</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Turkey Legs</Description>
+<UPC_Code>11111755</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Turkey Breast</Description>
+<UPC_Code>11111760</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+0
+  <product>
+    <Description>Lamb chops</Description>
+<UPC_Code>11111766</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+  <product>
+    <Description>Prime Rib</Description>
+<UPC_Code>11111771</UPC_Code>
+    <Isle>Meat</Isle>
+  </product>
+
+  <product>
+    <Description>Lobster</Description>
+<UPC_Code>11111783</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Crabs</Description>
+<UPC_Code>11111788</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Shrimp</Description>
+<UPC_Code>11111793</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Scallops</Description>
+<UPC_Code>11111798</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Salmon</Description>
+<UPC_Code>11111803</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Fillet of Sole</Description>
+<UPC_Code>11111808</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Tuna</Description>
+<UPC_Code>11111813</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+
+  <product>
+    <Description>Flounder</Description>
+<UPC_Code>11111820</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Clams</Description>
+<UPC_Code>11111825</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Squid</Description>
+<UPC_Code>11111830</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Eel</Description>
+<UPC_Code>11111835</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Tilapia</Description>
+<UPC_Code>11111840</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Cod</Description>
+<UPC_Code>11111845</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Swordfish</Description>
+<UPC_Code>11111850</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Shark</Description>
+<UPC_Code>11111855</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Oysters</Description>
+<UPC_Code>11111860</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Mussells</Description>
+<UPC_Code>11111865</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Sea Bass</Description>
+<UPC_Code>11111870</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+  <product>
+    <Description>Oysters</Description>
+<UPC_Code>11111875</UPC_Code>
+    <Isle>Fish</Isle>
+  </product>
+ 
 </SuperMarket>
