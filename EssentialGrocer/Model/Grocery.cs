@@ -38,6 +38,33 @@ using Windows.Storage.Streams;
 
 namespace EssentialGrocer.Model
 {
+    public static class sortableObservable
+    {
+
+        /* A paste in from http://stackoverflow.com/questions/1945461/how-do-i-sort-an-observable-collection */
+
+        public static void Sort<TSource, TKey>(this ObservableCollection<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            if (source == null) return;
+
+            Comparer<TKey> comparer = Comparer<TKey>.Default;
+
+            for (int i = source.Count - 1; i >= 0; i--)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    TSource o1 = source[j - 1];
+                    TSource o2 = source[j];
+                    if (comparer.Compare(keySelector(o1), keySelector(o2)) > 0)
+                    {
+                        source.Remove(o1);
+                        source.Insert(j, o1);
+                    }
+                }
+            }
+        }
+
+    }
     public class Grocery
     {
         private string upc_Code = "00000000";
@@ -60,10 +87,20 @@ namespace EssentialGrocer.Model
             set { isle = value; }
         }
 
-    }
 
+
+
+
+    } 
     public class GroceryManager
+
+
+
     {
+
+
+
+
         //This is a brute force method of creating xml file to save on the system.
         //Can probably be done more Elegantly, but it works.
         public void GetXMLForSaving(ObservableCollection<Grocery> GatherGroceries, XDocument Saviour)
@@ -225,6 +262,8 @@ namespace EssentialGrocer.Model
 
         }
 
+     
+
 
         // This was a paste from somewhere.  I believe it is going to be another delete,,,
         public static async Task<byte[]> ReadFile(StorageFile file)
@@ -308,3 +347,4 @@ namespace EssentialGrocer.Model
         }
     }
 }
+

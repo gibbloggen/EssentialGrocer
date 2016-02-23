@@ -60,7 +60,10 @@ namespace EssentialGrocer
             this.InitializeComponent();
             Groceries = new ObservableCollection<Grocery>();
             GroceryManager.GetGroceriesByAisle("Produce", Groceries);
+            //GroceriesToGet = new ObservableCollection<Grocery>();
             GroceriesToGet = new ObservableCollection<Grocery>();
+           
+
         }
 
         private void GroceryStore_ItemClick(object sender, ItemClickEventArgs e)
@@ -71,6 +74,8 @@ namespace EssentialGrocer
             GrocProduct.Description = PutItOnTheList.Description;
             GrocProduct.Isle = PutItOnTheList.Isle;
             GroceriesToGet.Add(GrocProduct);
+            GroceriesToGet.Sort(p => p.Description);
+            
             
         }
 
