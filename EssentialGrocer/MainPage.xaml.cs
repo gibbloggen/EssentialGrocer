@@ -61,7 +61,7 @@ namespace EssentialGrocer
         {
             this.InitializeComponent();
 
-            this.SizeChanged += MainPage_SizeChanged;
+           // this.SizeChanged += MainPage_SizeChanged;
 
             Groceries = new ObservableCollection<Grocery>();
             GroceryManager.GetGroceriesByAisle("Produce", Groceries);
@@ -69,8 +69,8 @@ namespace EssentialGrocer
             GroceriesToGet = new ObservableCollection<Grocery>();
             //Window.Current.Bounds.Height
 
-         MySplitView.IsPaneOpen =  GroceryManager.CheckWindowSize(Window.Current);
-         CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+         //MySplitView.IsPaneOpen =  GroceryManager.CheckWindowSize(Window.Current);
+         //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
         }
 
 
