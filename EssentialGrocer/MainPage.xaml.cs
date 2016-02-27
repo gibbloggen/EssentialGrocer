@@ -128,7 +128,7 @@ namespace EssentialGrocer
             if (NewList.IsSelected)
             {
                 GroceriesToGet.Clear();
-                MySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
 
             }
             else if (OpenList.IsSelected)
@@ -145,7 +145,7 @@ namespace EssentialGrocer
                     GroceryManager.GetGroceriesFromSavedList(file, GroceriesToGet, true);
                 }
 
-                MySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
 
             }
             else if (SaveList.IsSelected)
@@ -183,7 +183,7 @@ namespace EssentialGrocer
                 }
             }
 
-            MySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+            MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
 
 
         }
@@ -191,16 +191,9 @@ namespace EssentialGrocer
 
      private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            if (GroceryManager.CheckWindowSize(Window.Current))
-            {
-               // CategorySplitView.IsPaneOpen = true;
-            }
-            else
-            {
-                //CategorySplitView.IsPaneOpen = !CategorySplitView.IsPaneOpen;
-
-            }
-
+            if (MyRightMenuSorta.Visibility == Visibility.Collapsed) MyRightMenuSorta.Visibility = Visibility.Visible;
+            else MyRightMenuSorta.Visibility = Visibility.Collapsed;
+            return;
 
 
         }
@@ -212,46 +205,46 @@ namespace EssentialGrocer
             {
 
                 GroceryManager.GetGroceriesByAisle("Produce", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
 
             }
             else if (Bakery.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Bakery", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if( GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
             else if (Dairy.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Dairy", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
             }
             else if (Beverages.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Beverages", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
             else if (Cheese.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Cheese", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
             }
             else if (Deli.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Deli", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
             else if (Fish.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Fish", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
             } else if (Meat.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Meat", Groceries);
-                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
          
         }

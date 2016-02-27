@@ -98,9 +98,9 @@ namespace EssentialGrocer.Model
 
     {
 
-        public static Boolean CheckWindowSize(Windows.UI.Xaml.Window CurrentWndow, int DesiredWidth=700)
+        public static Boolean CheckWindowSize(Windows.UI.Xaml.Window CurrentWndow, int DesiredWidth=1200)
         {
-            if (CurrentWndow.Bounds.Width > DesiredWidth) return true; else return (false);
+            if (CurrentWndow.Bounds.Width < DesiredWidth) return true; else return (false);
             
             
             
