@@ -42,6 +42,7 @@ using EssentialGrocer.Model;
 
 namespace EssentialGrocer
 {
+    
     /// <summary>
     /// This is the currently only page of the program.
     /// It contains 2 hamburger menues one top left, other top right.
@@ -50,6 +51,7 @@ namespace EssentialGrocer
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public static double HoldWidth = 0;
         //Observable Collections here, so that when I update them
         //the change is showing on the list on the screen.
         private ObservableCollection<Grocery> GroceriesToGet;
@@ -58,13 +60,23 @@ namespace EssentialGrocer
         public MainPage()
         {
             this.InitializeComponent();
+
+            this.SizeChanged += MainPage_SizeChanged;
+
             Groceries = new ObservableCollection<Grocery>();
             GroceryManager.GetGroceriesByAisle("Produce", Groceries);
             //GroceriesToGet = new ObservableCollection<Grocery>();
             GroceriesToGet = new ObservableCollection<Grocery>();
-           
+            //Window.Current.Bounds.Height
 
+         MySplitView.IsPaneOpen =  GroceryManager.CheckWindowSize(Window.Current);
+         CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
         }
+
+
+
+
+
 
         private void GroceryStore_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -99,7 +111,14 @@ namespace EssentialGrocer
         //This is the button on the Left containing general operations
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+            if (GroceryManager.CheckWindowSize(Window.Current))
+                { MySplitView.IsPaneOpen = true;
+            }
+            else
+            {
+                MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+
+            }
         }
 
 
@@ -109,7 +128,7 @@ namespace EssentialGrocer
             if (NewList.IsSelected)
             {
                 GroceriesToGet.Clear();
-                MySplitView.IsPaneOpen = false;
+                MySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
             }
             else if (OpenList.IsSelected)
@@ -126,8 +145,8 @@ namespace EssentialGrocer
                     GroceryManager.GetGroceriesFromSavedList(file, GroceriesToGet, true);
                 }
 
-                MySplitView.IsPaneOpen = false;
-               
+                MySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+
             }
             else if (SaveList.IsSelected)
             {
@@ -164,17 +183,23 @@ namespace EssentialGrocer
                 }
             }
 
-            MySplitView.IsPaneOpen = false;
+            MySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
-     
+
         }
 
 
         private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            CategorySplitView.IsPaneOpen = !CategorySplitView.IsPaneOpen;
+            if (GroceryManager.CheckWindowSize(Window.Current))
+            {
+                CategorySplitView.IsPaneOpen = true;
+            }
+            else
+            {
+                CategorySplitView.IsPaneOpen = !CategorySplitView.IsPaneOpen;
 
-
+            }
 
 
 
@@ -187,48 +212,67 @@ namespace EssentialGrocer
             {
 
                 GroceryManager.GetGroceriesByAisle("Produce", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
 
             }
             else if (Bakery.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Bakery", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
             else if (Dairy.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Dairy", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
             }
             else if (Beverages.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Beverages", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
             else if (Cheese.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Cheese", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
             }
             else if (Deli.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Deli", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
             else if (Fish.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Fish", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
             } else if (Meat.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Meat", Groceries);
-                CategorySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
          
+        }
+
+        private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+          
+            if (e.NewSize.Width > 700)
+            {
+               MySplitView.IsPaneOpen = true;
+               CategorySplitView.IsPaneOpen = true;
+              
+            }
+            else
+            {
+                MySplitView.IsPaneOpen = false;
+                CategorySplitView.IsPaneOpen = false;
+                
+           }
+            return;
+
         }
     }
 

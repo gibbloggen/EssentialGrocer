@@ -98,7 +98,13 @@ namespace EssentialGrocer.Model
 
     {
 
-
+        public static Boolean CheckWindowSize(Windows.UI.Xaml.Window CurrentWndow, int DesiredWidth=700)
+        {
+            if (CurrentWndow.Bounds.Width > DesiredWidth) return true; else return (false);
+            
+            
+            
+        }
 
 
         //This is a brute force method of creating xml file to save on the system.
