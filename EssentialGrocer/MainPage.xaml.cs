@@ -189,15 +189,15 @@ namespace EssentialGrocer
         }
 
 
-        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+     private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
             if (GroceryManager.CheckWindowSize(Window.Current))
             {
-                CategorySplitView.IsPaneOpen = true;
+               // CategorySplitView.IsPaneOpen = true;
             }
             else
             {
-                CategorySplitView.IsPaneOpen = !CategorySplitView.IsPaneOpen;
+                //CategorySplitView.IsPaneOpen = !CategorySplitView.IsPaneOpen;
 
             }
 
@@ -212,46 +212,46 @@ namespace EssentialGrocer
             {
 
                 GroceryManager.GetGroceriesByAisle("Produce", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
 
             }
             else if (Bakery.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Bakery", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
             else if (Dairy.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Dairy", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
             }
             else if (Beverages.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Beverages", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
             else if (Cheese.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Cheese", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
             }
             else if (Deli.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Deli", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
             else if (Fish.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Fish", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
 
             } else if (Meat.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Meat", Groceries);
-                CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+                //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
             }
          
         }
@@ -262,13 +262,13 @@ namespace EssentialGrocer
             if (e.NewSize.Width > 700)
             {
                MySplitView.IsPaneOpen = true;
-               CategorySplitView.IsPaneOpen = true;
+               //CategorySplitView.IsPaneOpen = true;
               
             }
             else
             {
                 MySplitView.IsPaneOpen = false;
-                CategorySplitView.IsPaneOpen = false;
+                //CategorySplitView.IsPaneOpen = false;
                 
            }
             return;

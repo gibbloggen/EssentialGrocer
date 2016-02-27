@@ -16,9 +16,13 @@
                 <TextBlock Text="{x:Bind  Description}" HorizontalAlignment="Left" FontSize="22" />
             </StackPanel>
         </DataTemplate>
+        
+       
+
+       
     </Page.Resources>
     <!-- x:DataType="data:Grocery"-->
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="Auto" Width="Auto" Name="Gridder">
+    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="Auto" Width="Auto" Name="Gridder">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"  />
@@ -27,7 +31,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="*" />
 
 
@@ -46,9 +50,11 @@
                         <Setter Target="MySplitView.IsPaneOpen" Value="false" />
                         <Setter Target="CategorySplitView.IsPaneOpen" Value="false" />
                         <Setter Target="Gridder.Background" Value="Blue" />
+                      
                         <!--<Setter Target = "NeedItHeader.(Grid.ColumneSpan)" Value="1" />-->
                         <Setter Target = "NeedItHeader.HorizontalAlignment" Value="Center" />
                         <Setter Target="NeedItHeader.Margin" Value="23,0,20,32" />
+
                     </VisualState.Setters>
 
                 </VisualState>
@@ -58,13 +64,14 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="Inline" />
-                        <Setter Target="CategorySplitView.DisplayMode" Value="Inline" />
+                
                         <Setter Target="MySplitView.IsPaneOpen" Value="true" />
-                        <Setter Target="CategorySplitView.IsPaneOpen" Value="true" />
+                        
                         <Setter Target="Gridder.Background" Value="Red" />
                        <!-- <Setter Target = "NeedItHeader.(Grid.ColumnSpan)" Value="1" />-->
                         <Setter Target = "NeedItHeader.HorizontalAlignment" Value="Left" />
                         <Setter Target="NeedItHeader.Margin" Value="67,0,20,32" />
+
                     </VisualState.Setters>
 
 
@@ -75,7 +82,7 @@
         </VisualStateManager.VisualStateGroups>
 
 
-        <RelativePanel Grid.Row="0" Background="Aquamarine" Grid.ColumnSpan="2">
+        <RelativePanel Grid.Row="0" Grid.ColumnSpan="2"  Background="Aquamarine" >
             <Button Name="HamburgerButton" 
                     RelativePanel.AlignLeftWithPanel="True"
                     FontFamily="Segoe MDL2 Assets"
@@ -86,7 +93,7 @@
 
             <TextBlock Grid.Column="0"
                    RelativePanel.AlignHorizontalCenterWithPanel="True"
-                   Grid.ColumnSpan="2" Text="Essential Grocer" FontSize="32" />
+                   Text="Essential Grocer" FontSize="32" />
 
             <Button Name="CategoryButton" 
                     RelativePanel.AlignRightWithPanel="True"
@@ -110,7 +117,7 @@
                    >
             <SplitView.Pane>
                 <ListBox SelectionMode="Single" 
-                         Tapped="ListBox_Tapped">
+                         Tapped="ListBox_Tapped"   >
 
                     <ListBoxItem Name="NewList">
                         <StackPanel Orientation="Horizontal">
@@ -155,9 +162,9 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="1*"/>
-                     
 
-                        
+                        <ColumnDefinition Width="*"/>
+
                     </Grid.ColumnDefinitions>
                     <Rectangle Grid.Row="0"    Grid.Column="0"  Grid.RowSpan="1" Fill="Coral" Grid.ColumnSpan="1" Margin="0,0,0,32" />
 
@@ -196,13 +203,71 @@
                   ItemTemplate="{StaticResource GroceryListDataTemplate}">
                         </ListView>
                     </Grid>
+                    <ListBox Name = "MyRightMenuSorta" SelectionMode="Single" 
+                         Tapped="CategoryListBox_Tapped" Grid.Column="2" Grid.Row="1" Visibility="Collapsed">
+
+                        <ListBoxItem Name="Bakery">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Bakery</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="Beverages">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Beverages</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="Cheese">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Cheese</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="Dairy">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Dairy</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Name="Deli">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Deli</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="Fish">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Fish</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="Meat">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Meat</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Name="Produce">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                <TextBlock FontSize="24" Margin="20,0,0,0">Produce</TextBlock>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                    </ListBox>
+
 
                 </Grid>
+               
             </SplitView.Content>
 
         </SplitView>
 
-        <SplitView Grid.Row="1" 
+     <!--   <SplitView Grid.Row="1" 
                    Grid.RowSpan="2"
                    Grid.Column="2"
                   
@@ -211,8 +276,14 @@
                    CompactPaneLength="0" 
                     PanePlacement="Right" 
                    >
+
             <SplitView.Pane>
-                <ListBox SelectionMode="Single" 
+
+                <StaticResource ResourceKey="RightHamburgerMenuList" />
+
+
+
+                <ListBox x:Key="RightHamburgerMenuList" SelectionMode="Single" 
                          Tapped="CategoryListBox_Tapped">
 
                     <ListBoxItem Name="Bakery">
@@ -267,27 +338,20 @@
                         </StackPanel>
                     </ListBoxItem>
 
-
-
-
-
-
                 </ListBox>
+
+
+
             </SplitView.Pane>
-
-            <SplitView.Content>
                 
                 
                 
                 
-                
-                
-            </SplitView.Content>
-
+          
 
         </SplitView>
 
-
+        -->
 
 
 
