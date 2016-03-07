@@ -160,6 +160,7 @@ namespace EssentialGrocer
                 // Default file name if the user does not type one in or select a file to replace
                 savePicker.SuggestedFileName = "New Document";
                 StorageFile file = await savePicker.PickSaveFileAsync();
+                MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
                 if (file != null)
                 {
                     // Prevent updates to the remote version of the file until we finish making changes and call CompleteUpdatesAsync.

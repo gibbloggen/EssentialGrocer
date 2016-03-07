@@ -49,8 +49,8 @@
                         <Setter Target="MySplitView.DisplayMode" Value="Inline" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="true" />
                         <Setter Target="Stacker.Background" Value="Red" />
-                        <Setter Target="GroceryStore.Height" Value="825" />
-                        <Setter Target="GroceryStoreToGetList.Height" Value="825" />
+                        <Setter Target="GroceryStore.Height" Value="1025" />
+                        <Setter Target="GroceryStoreToGetList.Height" Value="1025" />
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Visible" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="32" />
                     </VisualState.Setters>
