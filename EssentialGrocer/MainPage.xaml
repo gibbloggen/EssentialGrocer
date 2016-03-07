@@ -21,8 +21,8 @@
 
        
     </Page.Resources>
-       
-    <StackPanel Orientation="Vertical" Name="Stacker">
+
+    <StackPanel Orientation="Vertical" Name="Stacker" Margin="0,0,0,12" >
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Phone">
@@ -33,9 +33,9 @@
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="false" />
-                        <Setter Target="Stacker.Background" Value="Blue" />
-                        <Setter Target="GroceryStore.Height" Value="555" />
-                        <Setter Target="GroceryStoreToGetList.Height" Value="555" />
+                        <!--<Setter Target="Stacker.Background" Value="Blue" />-->
+                        <Setter Target="GroceryStore.Height" Value="735" />
+                        <Setter Target="GroceryStoreToGetList.Height" Value="755" />
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Collapsed" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="26" />
                     </VisualState.Setters>
@@ -48,7 +48,7 @@
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="Inline" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="true" />
-                        <Setter Target="Stacker.Background" Value="Red" />
+                       <!-- <Setter Target="Stacker.Background" Value="Red" />-->
                         <Setter Target="GroceryStore.Height" Value="1025" />
                         <Setter Target="GroceryStoreToGetList.Height" Value="1025" />
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Visible" />
@@ -128,7 +128,58 @@
                                 <TextBlock FontSize="24" Margin="20,0,0,0">Print</TextBlock>
                             </StackPanel>
                         </ListBoxItem>
-                    </ListBox>
+                    <!--<ListBoxItem Name="AddToMain" >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <Button Tapped="MakeFlyout"  Background="White" FontSize="24" Margin="20,0,0,0" Content="GroceryItem">
+                                <Button.Flyout>
+                                    <Flyout x:Name="AddToTheList">
+                                        <StackPanel Orientation="Vertical">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock>Category:</TextBlock>
+                                                <ComboBox>
+                                                    <ComboBoxItem>Bakery</ComboBoxItem>
+                                                    <ComboBoxItem>Beverages</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+
+                                                <TextBlock>Description</TextBlock>
+                                                <TextBox Name="StoreItemDescription" Width="58" PlaceholderText="Putting On Main List"  />
+                                            </StackPanel>
+                                            <Button Content="OK" />
+                                        </StackPanel>
+
+
+                                    </Flyout>
+                                </Button.Flyout>
+                            
+                            </Button>
+                            e="GatherStore">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <ComboBox>
+                                            <TextBlock>Category</TextBlock>
+                                            <ComboBoxItem>Bakery</ComboBoxItem>
+                                            <ComboBoxItem>Beverages</ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock>Description</TextBlock>
+                                        <TextBox Name="StoreItemDescription"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            -->
+                            
+
+                      
+                   
+                      
+                    
+
+
+                </ListBox>
                 </SplitView.Pane>
                 <SplitView.Content >
                 <StackPanel Orientation="Vertical">
@@ -160,22 +211,48 @@
                                     FontSize="23">
                             Do We Need it?
                         </TextBlock>
-                        <ListView Grid.Column="0" Grid.Row="1" Height="400"
+                        <StackPanel Grid.Column="0" Grid.Row="1" Background="CadetBlue">
+                        <ListView 
                                 ItemsSource="{x:Bind GroceriesToGet, Mode=OneWay}"
                                 Name="GroceryStoreToGetList"
                                 ItemClick="GroceryStoreToGetList_ItemClick"
                                 IsItemClickEnabled="True" 
-                                ItemTemplate="{StaticResource GroceryListDataTemplate}">
+                                ItemTemplate="{StaticResource GroceryListDataTemplate}"
+                                 >
                         </ListView>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="Coral">
+                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="93,14,0,0" Content="Add to Produce">
+                                <Button.Flyout>
+                                    <Flyout x:Name="AddToTheList">
+                                        <StackPanel Orientation="Vertical">
+                                            
+                                            <StackPanel Orientation="Horizontal">
+
+                                                <TextBlock Margin="20,5,20,0">New Item</TextBlock>
+                                                <TextBox Name="StoreItemDescription" Width="208" PlaceholderText="Putting On Master List"  />
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                            <Button Content="Add To Master List"  Margin="20,20,20,20"/>
+                                                <Button Content="Cancel" Margin="20,20,20,20" />
+                                            </StackPanel>
+                                        </StackPanel>
 
 
+                                    </Flyout>
+                                </Button.Flyout>
 
-                        <ListView Grid.Column="1" Grid.Row="1" ItemsSource="{x:Bind Groceries,Mode=OneWay}" 
+                            </Button>
+
+                            <ListView ItemsSource="{x:Bind Groceries,Mode=OneWay}" 
                              Name="GroceryStore" 
                              ItemClick="GroceryStore_ItemClick"
                              IsItemClickEnabled="True" 
                              ItemTemplate="{StaticResource GroceryListDataTemplate}">
                         </ListView>
+                            
+                        </StackPanel>
 
                         <ListBox Name = "MyRightMenuSorta" SelectionMode="Single" 
                                 Tapped="CategoryListBox_Tapped" Grid.RowSpan="2"  Grid.Column="2" Visibility="Collapsed">
