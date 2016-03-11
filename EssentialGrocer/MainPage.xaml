@@ -51,6 +51,7 @@
                         <!--<Setter Target="Stacker.Background" Value="Blue" />-->
                         <Setter Target="GroceryStore.Height" Value="735" />
                         <Setter Target="GroceryStoreToGetList.Height" Value="755" />
+                        <Setter Target="MyRightMenuSorta.Height" Value="755" />
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Collapsed" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="26" />
                     </VisualState.Setters>
@@ -64,9 +65,10 @@
                         <Setter Target="MySplitView.DisplayMode" Value="Inline" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="true" />
                         <!-- <Setter Target="Stacker.Background" Value="Red" />-->
-                        <Setter Target="GroceryStore.Height" Value="1025" />
-                        <Setter Target="GroceryStoreToGetList.Height" Value="1025" />
+                        <Setter Target="GroceryStore.Height" Value="800" />
+                        <Setter Target="GroceryStoreToGetList.Height" Value="825" />
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Visible" />
+                        <Setter Target="MyRightMenuSorta.Height" Value="825" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="32" />
                     </VisualState.Setters>
 
@@ -143,57 +145,6 @@
                             <TextBlock FontSize="24" Margin="20,0,0,0">Print</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
-                    <!--<ListBoxItem Name="AddToMain" >
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
-                            <Button Tapped="MakeFlyout"  Background="White" FontSize="24" Margin="20,0,0,0" Content="GroceryItem">
-                                <Button.Flyout>
-                                    <Flyout x:Name="AddToTheList">
-                                        <StackPanel Orientation="Vertical">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock>Category:</TextBlock>
-                                                <ComboBox>
-                                                    <ComboBoxItem>Bakery</ComboBoxItem>
-                                                    <ComboBoxItem>Beverages</ComboBoxItem>
-                                                </ComboBox>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <TextBlock>Description</TextBlock>
-                                                <TextBox Name="StoreItemDescription" Width="58" PlaceholderText="Putting On Main List"  />
-                                            </StackPanel>
-                                            <Button Content="OK" />
-                                        </StackPanel>
-
-
-                                    </Flyout>
-                                </Button.Flyout>
-                            
-                            </Button>
-                            e="GatherStore">
-                                <StackPanel Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal">
-                                        <ComboBox>
-                                            <TextBlock>Category</TextBlock>
-                                            <ComboBoxItem>Bakery</ComboBoxItem>
-                                            <ComboBoxItem>Beverages</ComboBoxItem>
-                                        </ComboBox>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-
-                                        <TextBlock>Description</TextBlock>
-                                        <TextBox Name="StoreItemDescription"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            -->
-
-
-
-
-
-
-
-
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content >
@@ -211,6 +162,7 @@
                         </Grid.ColumnDefinitions>
                         <Rectangle Grid.Column="0"  Fill="Coral" />
                         <Rectangle Grid.Column="1"  Fill="CadetBlue" />
+                        <Rectangle Grid.Column="2" Fill="Silver" />
                         <TextBlock Grid.Column="0"
                                VerticalAlignment="Center" 
                                HorizontalAlignment="Center"
@@ -270,18 +222,19 @@
                         </StackPanel>
 
                         <ListBox Name = "MyRightMenuSorta" SelectionMode="Single" 
-                                Tapped="CategoryListBox_Tapped" Grid.RowSpan="2"  Grid.Column="2" Visibility="Collapsed">
+                                Tapped="CategoryListBox_Tapped" Grid.Row="1" Grid.RowSpan="2"  Grid.Column="2" Visibility="Collapsed">
+
+                            <ListBoxItem Name="Bakery">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                    <TextBlock FontSize="24" Margin="20,0,0,0">Bakery</TextBlock>
+                                </StackPanel>
+                            </ListBoxItem>
 
                             <ListBoxItem Name="BakeSpice">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
                                     <TextBlock FontSize="24" Margin="20,0,0,0">BakeSpice</TextBlock>
-                                </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem Name="Bakery">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
-                                    <TextBlock FontSize="24" Margin="20,0,0,0">Bakery</TextBlock>
                                 </StackPanel>
                             </ListBoxItem>
 
@@ -291,12 +244,33 @@
                                     <TextBlock FontSize="24" Margin="20,0,0,0">Beverages</TextBlock>
                                 </StackPanel>
                             </ListBoxItem>
+                            <ListBoxItem Name="CannedJarred">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                    <TextBlock FontSize="24" Margin="20,0,0,0">Canned Jarred</TextBlock>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="Cereal">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                    <TextBlock FontSize="24" Margin="20,0,0,0">Cereal</TextBlock>
+                                </StackPanel>
+                            </ListBoxItem>
+
                             <ListBoxItem Name="Cheese">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
                                     <TextBlock FontSize="24" Margin="20,0,0,0">Cheese</TextBlock>
                                 </StackPanel>
                             </ListBoxItem>
+                            <ListBoxItem Name="Condiments">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                    <TextBlock FontSize="24" Margin="20,0,0,0">Condiments</TextBlock>
+                                </StackPanel>
+                            </ListBoxItem>
+
                             <ListBoxItem Name="Dairy">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
@@ -316,11 +290,26 @@
                                     <TextBlock FontSize="24" Margin="20,0,0,0">Fish</TextBlock>
                                 </StackPanel>
                             </ListBoxItem>
-
+                            
+                            <ListBoxItem Name="Frozen">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                    <TextBlock FontSize="24" Margin="20,0,0,0">Frozen</TextBlock>
+                                </StackPanel>
+                            </ListBoxItem>
+                            
+                            
                             <ListBoxItem Name="Meat">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
                                     <TextBlock FontSize="24" Margin="20,0,0,0">Meat</TextBlock>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="NoodlesPasta">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                                    <TextBlock FontSize="24" Margin="20,0,0,0">NoodlesPasta</TextBlock>
                                 </StackPanel>
                             </ListBoxItem>
 

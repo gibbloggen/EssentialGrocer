@@ -744,4 +744,162 @@
     </UPC_Code>
     <Isle>BakeSpice</Isle>
   </product>
+
+
+  <product>
+    <Description>Pork-N-Beans</Description>
+    <UPC_Code>
+      11111894
+    </UPC_Code>
+    <Isle>CannedJarred</Isle>
+  </product>
+  <product>
+    <Description>Creamed Corn</Description>
+    <UPC_Code>
+      11111895
+    </UPC_Code>
+    <Isle>CannedJarred</Isle>
+  </product>
+  <product>
+    <Description>Italian Tomatoes</Description>
+    <UPC_Code>
+      11111896
+    </UPC_Code>
+    <Isle>CannedJarred</Isle>
+  </product>
+  <product>
+    <Description>Tomato Paste</Description>
+    <UPC_Code>
+      11111897
+    </UPC_Code>
+    <Isle>CannedJarred</Isle>
+  </product>
+
+
+
+
+
+  <product>
+    <Description>Chopped Kale</Description>
+    <UPC_Code>
+      11111890
+    </UPC_Code>
+    <Isle>Frozen</Isle>
+  </product>
+  <product>
+    <Description>Creamed Spinach</Description>
+    <UPC_Code>
+      11111891
+    </UPC_Code>
+    <Isle>Frozen</Isle>
+  </product>
+  <product>
+    <Description>Waffles</Description>
+    <UPC_Code>
+      11111892
+    </UPC_Code>
+    <Isle>Frozen</Isle>
+  </product>
+  <product>
+    <Description>IceCream</Description>
+    <UPC_Code>
+      11111893
+    </UPC_Code>
+    <Isle>Frozen</Isle>
+  </product>
+
+
+
+
+
+  <product>
+    <Description>Oatmeal</Description>
+    <UPC_Code>
+      11111898
+    </UPC_Code>
+    <Isle>Cereal</Isle>
+  </product>
+  <product>
+    <Description>Corn Flakes</Description>
+    <UPC_Code>
+      11111899
+    </UPC_Code>
+    <Isle>Cereal</Isle>
+  </product>
+  <product>
+    <Description>Granola</Description>
+    <UPC_Code>
+      11111900
+    </UPC_Code>
+    <Isle>Cereal</Isle>
+  </product>
+  <product>
+    <Description>Raisin Bran</Description>
+    <UPC_Code>
+      11111901
+    </UPC_Code>
+    <Isle>Cereal</Isle>
+  </product>
+
+
+  <product>
+    <Description>Spaghetti</Description>
+    <UPC_Code>
+      11111902
+    </UPC_Code>
+    <Isle>NoodlesPasta</Isle>
+  </product>
+  <product>
+    <Description>Ramen Noodles</Description>
+    <UPC_Code>
+      11111903
+    </UPC_Code>
+    <Isle>NoodlesPasta</Isle>
+  </product>
+  <product>
+    <Description>Ravioli</Description>
+    <UPC_Code>
+      11111904
+    </UPC_Code>
+    <Isle>NoodlesPasta</Isle>
+  </product>
+  <product>
+    <Description>Egg Noodles</Description>
+    <UPC_Code>
+      11111905
+    </UPC_Code>
+    <Isle>NoodlesPasta</Isle>
+  </product>
+
+
+  <product>
+    <Description>Kethcup</Description>
+    <UPC_Code>
+      11111906
+    </UPC_Code>
+    <Isle>Condiments</Isle>
+  </product>
+  <product>
+    <Description>Mustard</Description>
+    <UPC_Code>
+      11111907
+    </UPC_Code>
+    <Isle>Condiments</Isle>
+  </product>
+  <product>
+    <Description>Duck Sauce</Description>
+    <UPC_Code>
+      11111908
+    </UPC_Code>
+    <Isle>Condiments</Isle>
+  </product>
+  <product>
+    <Description>BBQ Sauce</Description>
+    <UPC_Code>
+      11111909
+    </UPC_Code>
+    <Isle>Condiments</Isle>
+  </product>
+  
+  
 </SuperMarket>

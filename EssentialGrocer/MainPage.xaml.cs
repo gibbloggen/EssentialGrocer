@@ -209,7 +209,7 @@ namespace EssentialGrocer
         {
             if (Produce.IsSelected)
             {
-
+                WhatToAdd.Content = "Add To Produce";
                 GroceryManager.GetGroceriesByAisle("Produce", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
@@ -223,43 +223,90 @@ namespace EssentialGrocer
             }
             else if (Dairy.IsSelected)
             {
+                WhatToAdd.Content = "Add To Dairy";
                 GroceryManager.GetGroceriesByAisle("Dairy", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
             }
             else if (Beverages.IsSelected)
             {
+                WhatToAdd.Content = "Add To Beverages";
                 GroceryManager.GetGroceriesByAisle("Beverages", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
             else if (Cheese.IsSelected)
             {
+                WhatToAdd.Content = "Add To Cheese";
                 GroceryManager.GetGroceriesByAisle("Cheese", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
             }
             else if (Deli.IsSelected)
             {
+                WhatToAdd.Content = "Add To Deli";
                 GroceryManager.GetGroceriesByAisle("Deli", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
             else if (Fish.IsSelected)
             {
+                WhatToAdd.Content = "Add To Fish";
                 GroceryManager.GetGroceriesByAisle("Fish", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
             }
             else if (Meat.IsSelected)
             {
+                WhatToAdd.Content = "Add To Meat";
                 GroceryManager.GetGroceriesByAisle("Meat", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
 
             else if (BakeSpice.IsSelected)
             {
+                WhatToAdd.Content = "Add To BakeSpice";
                 GroceryManager.GetGroceriesByAisle("BakeSpice", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
+
+            else if (Frozen.IsSelected)
+            {
+                WhatToAdd.Content = "Add To Frozen";
+                GroceryManager.GetGroceriesByAisle("Frozen", Groceries);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
+            }
+
+            else if (CannedJarred.IsSelected)
+            {
+                WhatToAdd.Content = "Add To Canned Jarred";
+                GroceryManager.GetGroceriesByAisle("CannedJarred", Groceries);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
+            }
+
+            else if (NoodlesPasta.IsSelected)
+            {
+                WhatToAdd.Content = "Add To Noodles Pasta";
+                GroceryManager.GetGroceriesByAisle("NoodlesPasta", Groceries);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
+            }
+
+            else if (Condiments.IsSelected)
+            {
+                WhatToAdd.Content = "Add To Condiments";
+                GroceryManager.GetGroceriesByAisle("Condiments", Groceries);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
+            }
+
+            else if (Cereal.IsSelected)
+            {
+                WhatToAdd.Content = "Add To Cereal";
+                GroceryManager.GetGroceriesByAisle("Cereal", Groceries);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
+            }
+
+
+
+
+
 
         }
 
@@ -290,11 +337,12 @@ namespace EssentialGrocer
         private void AddToList(object sender, TappedRoutedEventArgs e)
         {
             GroceryManager.AddToList(Groceries, WhatToAdd.Content.ToString(), StoreItemDescription.Text);
+            AddToTheList.Hide();
         }
 
         private void CancelFlyout(object sender, TappedRoutedEventArgs e)
         {
-
+            AddToTheList.Hide();
         }
     }
 
