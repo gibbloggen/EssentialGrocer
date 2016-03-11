@@ -42,7 +42,7 @@ using EssentialGrocer.Model;
 
 namespace EssentialGrocer
 {
-    
+
     /// <summary>
     /// This is the currently only page of the program.
     /// It contains 2 hamburger menues one top left, other top right.
@@ -57,20 +57,24 @@ namespace EssentialGrocer
         private ObservableCollection<Grocery> GroceriesToGet;
         private ObservableCollection<Grocery> Groceries;
 
+        //public static ObservableCollection<Grocery> Groceries;
+
         public MainPage()
         {
             this.InitializeComponent();
 
-           // this.SizeChanged += MainPage_SizeChanged;
+            // this.SizeChanged += MainPage_SizeChanged;
 
             Groceries = new ObservableCollection<Grocery>();
-            GroceryManager.GetGroceriesByAisle("Produce", Groceries);
+            //GroceryManager.GetGroceriesByAisle("Produce", Groceries);
             //GroceriesToGet = new ObservableCollection<Grocery>();
             GroceriesToGet = new ObservableCollection<Grocery>();
+
+            GroceryManager.AsynchInitializingGroceryCollection(Groceries);
             //Window.Current.Bounds.Height
 
-         //MySplitView.IsPaneOpen =  GroceryManager.CheckWindowSize(Window.Current);
-         //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
+            //MySplitView.IsPaneOpen =  GroceryManager.CheckWindowSize(Window.Current);
+            //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
         }
 
 
@@ -87,11 +91,11 @@ namespace EssentialGrocer
             GrocProduct.Isle = PutItOnTheList.Isle;
             GroceriesToGet.Add(GrocProduct);
             GroceriesToGet.Sort(p => p.Description);
-            
-            
+
+
         }
 
-       
+
 
         private void GroceryStoreToGetList_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -112,7 +116,8 @@ namespace EssentialGrocer
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             if (GroceryManager.CheckWindowSize(Window.Current))
-                { MySplitView.IsPaneOpen = true;
+            {
+                MySplitView.IsPaneOpen = true;
             }
             else
             {
@@ -150,7 +155,7 @@ namespace EssentialGrocer
             }
             else if (SaveList.IsSelected)
             {
-                
+
                 XDocument doccer = new XDocument();
                 GroceryManager v = new GroceryManager();
                 v.GetXMLForSaving(GroceriesToGet, doccer);
@@ -167,16 +172,16 @@ namespace EssentialGrocer
                     CachedFileManager.DeferUpdates(file);
                     // write to file
                     await FileIO.WriteTextAsync(file, doccer.ToString());
-                      // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
+                    // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
                     // Completing updates may require Windows to ask for user input.
                     FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
                     if (status == FileUpdateStatus.Complete)
                     {
-                   
+
                     }
                     else
                     {
-                      
+
                     }
                 }
                 else
@@ -190,7 +195,7 @@ namespace EssentialGrocer
         }
 
 
-     private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
             if (MyRightMenuSorta.Visibility == Visibility.Collapsed) MyRightMenuSorta.Visibility = Visibility.Visible;
             else MyRightMenuSorta.Visibility = Visibility.Collapsed;
@@ -213,7 +218,8 @@ namespace EssentialGrocer
             else if (Bakery.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Bakery", Groceries);
-                if( GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
+                WhatToAdd.Content = "Add To Bakery";
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
             else if (Dairy.IsSelected)
             {
@@ -242,30 +248,52 @@ namespace EssentialGrocer
                 GroceryManager.GetGroceriesByAisle("Fish", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
 
-            } else if (Meat.IsSelected)
+            }
+            else if (Meat.IsSelected)
             {
                 GroceryManager.GetGroceriesByAisle("Meat", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
-         
+
+            else if (BakeSpice.IsSelected)
+            {
+                GroceryManager.GetGroceriesByAisle("BakeSpice", Groceries);
+                if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
+            }
+
         }
 
         private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-          
+
             if (e.NewSize.Width > 700)
             {
-               MySplitView.IsPaneOpen = true;
-               //CategorySplitView.IsPaneOpen = true;
-              
+                MySplitView.IsPaneOpen = true;
+                //CategorySplitView.IsPaneOpen = true;
+
             }
             else
             {
                 MySplitView.IsPaneOpen = false;
                 //CategorySplitView.IsPaneOpen = false;
-                
-           }
+
+            }
             return;
+
+        }
+
+        private void MakeFlyout(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void AddToList(object sender, TappedRoutedEventArgs e)
+        {
+            GroceryManager.AddToList(Groceries, WhatToAdd.Content.ToString(), StoreItemDescription.Text);
+        }
+
+        private void CancelFlyout(object sender, TappedRoutedEventArgs e)
+        {
 
         }
     }

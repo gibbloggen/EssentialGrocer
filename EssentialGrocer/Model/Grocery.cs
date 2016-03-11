@@ -87,23 +87,316 @@ namespace EssentialGrocer.Model
             set { isle = value; }
         }
 
+    }
 
 
 
-
-    } 
+    /// <summary>
+    /// Main Class that does the bulk of the work with the Grocery Lists manipulation
+    /// Of note, a lot of async stuff, and am learning it as I go.
+    /// </summary>
     public class GroceryManager
 
-
-
     {
+        static string groceryDataFileName = "GroceryData.xml";
 
-        public static Boolean CheckWindowSize(Windows.UI.Xaml.Window CurrentWndow, int DesiredWidth=1200)
+        public static ObservableCollection<Grocery> observableGroceries;
+
+        /*   public ObservableCollection<Grocery> observableGroceries
+       {
+           get { return MainPage.Groceries; }
+           set { MainPage.Groceries = value; }
+       }*/
+
+        private static XDocument masterListX = null;
+        public static XDocument MasterListX
+        {
+            get { return masterListX; }
+            set { masterListX = value; }
+        }
+
+
+
+
+
+        /// <summary>
+        /// This initialization routine took some doing, I had to realize that because it was async, it was not sending anything back, 
+        /// nor is it stopping the calling routine, hence async :-)  So, I am working with putting anything I want to follow these calculations
+        /// either called in this method beyond the await, if it has to be done after the async calulations, or, in this case, data reads.
+        /// </summary>
+        public async static void AsynchInitializingGroceryCollection(ObservableCollection<Grocery> merde)
+        {
+
+            string IsleFor = "Produce";
+            Stream GroceryDataStream = null;
+            try
+            {
+                GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(groceryDataFileName);
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open");
+                try
+                {
+                    string fileName = groceryDataFileName;
+                    string sourcePath = @".\Model";
+                    string targetPath = ApplicationData.Current.LocalFolder.Path;
+                    string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+                    if (!System.IO.Directory.Exists(targetPath))
+                    {
+                        System.Diagnostics.Debug.WriteLine("No Path at local folder" + targetPath);
+
+                    }
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(groceryDataFileName);
+
+                }
+                catch
+                {
+                    System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing reset");
+
+                }
+            }
+
+
+
+            //This redundent code with GetGroceryByIsle, for now I am using it to handle the asyncrhonization.
+            //That the observableGroceries is static throughout the class, will give that flexibility
+
+            // Stream grocDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(grocData);
+            MasterListX = XDocument.Load(GroceryDataStream);
+
+            //GetGroceriesByAisle("Produce", PassedObservableGroceries);
+
+            //ObservableCollection<Grocery> localGroceryAccess = Application.Groceries;
+
+            merde.Clear();
+
+            var q = from b in MasterListX.Descendants("product")
+                    select new
+                    {
+                        UPC_Code = (string)b.Element("UPC_Code").Value,
+                        Description = (string)b.Element("Description").Value,
+                        Isle = (string)b.Element("Isle").Value,
+                    };
+
+            q = q.Where(p => p.Isle == IsleFor).OrderBy(p => p.Description);
+            q = q.OrderBy(p => p.Description);
+            foreach (var grocery in q)
+                if (grocery.Isle == IsleFor)
+                    merde.Add(new Grocery { UPC_Code = grocery.UPC_Code, Description = grocery.Description, Isle = grocery.Isle });
+
+
+
+
+
+
+
+
+
+        }
+
+
+        private async static void SaveMasterList()
+        {
+            Stream GroceryDataStream = null;
+            try
+            {
+                GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(groceryDataFileName, CreationCollisionOption.ReplaceExisting);
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open for Write");
+
+            }
+
+
+            MasterListX.Save(GroceryDataStream);
+
+
+        }
+
+        public static Boolean CheckWindowSize(Windows.UI.Xaml.Window CurrentWndow, int DesiredWidth = 1200)
         {
             if (CurrentWndow.Bounds.Width < DesiredWidth) return true; else return (false);
-            
-            
-            
+
+
+
+        }
+
+
+        public static Boolean AddToList(ObservableCollection<Grocery> Groceries, string IsleCategory, string ItemDescription)
+        {
+
+
+            // ObservableCollection<Grocery> GroceriesMaster = new ObservableCollection<Grocery>();
+
+
+            switch (IsleCategory)
+            {
+
+                case "Add To Bakery":
+                    UpdatingMasterList(ItemDescription, "Bakery");
+                    GetGroceriesByAisle("Bakery", Groceries);
+
+
+                    System.Diagnostics.Debug.WriteLine("Got Bakery");
+                    break;
+
+
+                case "Add To Bake/Spice":
+
+                    System.Diagnostics.Debug.WriteLine("Got Bake/Spice");
+                    break;
+
+
+
+
+
+            }
+
+            SaveMasterList();
+
+            return true;
+
+
+        }
+
+        /*public async static void pGetGroceriesMaster(ObservableCollection<Grocery> observableGroceries)
+        {
+
+            //his opening bit is to make sure that the GroceryData.xml file is in the Local State folder
+            //in the users profile.  During Development the path is c:/users/gibbl/appdata/local/Packages/<gibberish>/LocalState
+            //If it isn't in that folder, then it copies a new one from the source code.
+            Windows.Storage.StorageFile GroceryData = null;
+
+            if (observableGroceries.Count != 0) observableGroceries.Clear();
+
+            try
+            {
+                GroceryData = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("GroceryData.xml");
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open");
+                try
+                {
+                    string fileName = "GroceryData.xml";
+                    string sourcePath = @".\Model";
+                    string targetPath = ApplicationData.Current.LocalFolder.Path;
+                    string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+                    if (!System.IO.Directory.Exists(targetPath))
+                    {
+                        System.Diagnostics.Debug.WriteLine("No Path at local folder" + targetPath);
+
+                    }
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    GroceryData = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("GroceryData.xml");
+
+                }
+                catch
+                {
+                    System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing reset");
+
+                }
+            }
+
+            // Need to add the SuperMarket Tag, I think,,,
+
+            Stream jc = await GroceryData.OpenStreamForReadAsync();
+
+            XDocument GrocXML = XDocument.Load(jc);
+            //XDocument GrocXML =  XDocument.Load("GroceryData.xml");
+
+            var j = new ObservableCollection<Grocery>();
+
+            var q = from b in GrocXML.Descendants("product")
+                    select new
+                    {
+                        UPC_Code = (string)b.Element("UPC_Code").Value,
+                        Description = (string)b.Element("Description").Value,
+                        Isle = (string)b.Element("Isle").Value,
+                    };
+
+           // q = q.OrderBy(p => p.Description);
+            //q = q.OrderBy(p => p.Description);
+            foreach (var grocery in q)
+               // if (grocery.Isle == IsleFor)
+                    observableGroceries.Add(new Grocery { UPC_Code = grocery.UPC_Code, Description = grocery.Description, Isle = grocery.Isle });
+
+            //observableGroceries = j;
+            return;
+
+
+        }*/
+
+        public static void UpdatingMasterList(string describer, string IsleEr)
+        {
+
+            // string grocData = "GroceryData.xml";
+            //  Stream  grocDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(grocData);
+
+            //  XDocument masterListX = XDocument.Load(grocDataStream);
+            // grocDataStream = null;
+            XElement newProduct = masterListX.Element("SuperMarket");
+
+            Random q = new Random();
+            Int32 numberPlease = q.Next(99999999);
+
+            newProduct.Add(new XElement("product",
+                new XElement("Isle", IsleEr),
+                new XElement("Description", describer),
+                new XElement("UPC_Code", numberPlease)));
+
+            int r = 1;
+
+            //Stream grocDataStreamWrite = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(grocData, CreationCollisionOption.ReplaceExisting);
+            //masterListX.Save(grocDataStreamWrite);
+
+
+
+
+
+            // return;
+
+            /*   foreach (Grocery j in GroceriesMaster)
+               {
+                   XElement k = new XElement("Product",
+                       new XElement("UPC_Code", j.UPC_Code),
+                       new XElement("Description", j.Description),
+                       new XElement("Isle", j.Isle));
+
+                   Saviour.Element("SuperMarket").Add(k);
+               }
+
+               Random q = new Random();
+               Int32 numberPlease = q.Next(99999999);
+
+               XElement v = new XElement("Product",
+                   new XElement("UPC_Code", numberPlease),
+                   new XElement("Description", describer),
+                   new XElement("Isle", IsleEr));
+
+               Saviour.Element("SuperMarket").Add(v);
+
+
+
+               string fileName = "GroceryData.xml";
+               // string sourcePath = @".\Model";
+               string targetPath = ApplicationData.Current.LocalFolder.Path;
+               //string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+               string destFile = System.IO.Path.Combine(targetPath, fileName);
+
+               if (File.Exists(destFile)) {
+                   File.Delete(destFile);
+   }
+               FileStream jazz = File.Create(destFile);
+               Saviour.Save(jazz);
+
+
+               return;*/
         }
 
 
@@ -147,55 +440,24 @@ namespace EssentialGrocer.Model
         // This procedure orders the main grocery list in such a way that it works with the various filters.
         // The sort is by isle and then by product alpabetically.
 
-        public async static void GetGroceriesByAisle(string IsleFor, ObservableCollection<Grocery> observableGroceries)
+        public static void GetGroceriesByAisle(string IsleFor, ObservableCollection<Grocery> bringingItOver)
         {
-    
+
             //his opening bit is to make sure that the GroceryData.xml file is in the Local State folder
             //in the users profile.  During Development the path is c:/users/gibbl/appdata/local/Packages/<gibberish>/LocalState
             //If it isn't in that folder, then it copies a new one from the source code.
-            Windows.Storage.StorageFile GroceryData = null ;
-            
-            if (observableGroceries.Count != 0) observableGroceries.Clear();
 
-            try
-            {
-                GroceryData = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("GroceryData.xml");
-            }
-            catch
-            {
-                System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open");
-                try
-                {
-                  string fileName = "GroceryData.xml";
-                    string sourcePath = @".\Model";
-                    string targetPath = ApplicationData.Current.LocalFolder.Path;
-                    string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
-                    string destFile = System.IO.Path.Combine(targetPath, fileName);
-                    if (!System.IO.Directory.Exists(targetPath))
-                    {
-                        System.Diagnostics.Debug.WriteLine("No Path at local folder" + targetPath);
-                        
-                    }
-                    System.IO.File.Copy(sourceFile, destFile, true);
-                    GroceryData = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("GroceryData.xml");
-                 
-                }
-                catch {
-                    System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing reset");
-                        
-                        }
-            }
+            // ObservableCollection<Grocery> localGroceryAccess = Application.Groceries;
 
-           
-               
-            Stream jc = await GroceryData.OpenStreamForReadAsync();
 
-            XDocument GrocXML = XDocument.Load(jc);
+            // Stream jc = await GroceryData.OpenStreamForReadAsync();
+
+            // XDocument GrocXML = XDocument.Load(jc);
             //XDocument GrocXML =  XDocument.Load("GroceryData.xml");
 
-            var j = new ObservableCollection<Grocery>();
+            bringingItOver.Clear();
 
-            var q = from b in GrocXML.Descendants("product")
+            var q = from b in MasterListX.Descendants("product")
                     select new
                     {
                         UPC_Code = (string)b.Element("UPC_Code").Value,
@@ -207,10 +469,10 @@ namespace EssentialGrocer.Model
             q = q.OrderBy(p => p.Description);
             foreach (var grocery in q)
                 if (grocery.Isle == IsleFor)
-                    observableGroceries.Add(new Grocery { UPC_Code = grocery.UPC_Code, Description = grocery.Description, Isle = grocery.Isle });
+                    bringingItOver.Add(new Grocery { UPC_Code = grocery.UPC_Code, Description = grocery.Description, Isle = grocery.Isle });
 
 
-
+            return;
 
         }
 
@@ -221,8 +483,8 @@ namespace EssentialGrocer.Model
             return GrocXML.ToString();
         }
 
-      
-        
+
+
         // This routine appends the xml file to the existing grocery list, so that you can add either recipe lists, or 
         // a list that is one of your standards.
 
@@ -231,7 +493,7 @@ namespace EssentialGrocer.Model
         public static async void GetGroceriesFromSavedList(StorageFile TheAddition, ObservableCollection<Grocery> ObservableGroceries, bool Append)
         {
             Stream w = await TheAddition.OpenStreamForReadAsync();
-            
+
             char line;
             string anything = "";
             for (int i = 0; i < w.Length; i++)
@@ -268,7 +530,7 @@ namespace EssentialGrocer.Model
 
         }
 
-     
+
 
 
         // This was a paste from somewhere.  I believe it is going to be another delete,,,
@@ -353,4 +615,3 @@ namespace EssentialGrocer.Model
         }
     }
 }
-
