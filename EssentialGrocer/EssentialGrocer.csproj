@@ -20,6 +20,7 @@
     <PackageCertificateThumbprint>E41347E725E4E3DC9F8031B08743A69CE97368C8</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -96,6 +97,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="EssentialGrocer_StoreKey.pfx" />
+    <None Include="EssentialGrocer_TemporaryKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -112,7 +114,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="EssentialGrocer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\GroceryData.xml">

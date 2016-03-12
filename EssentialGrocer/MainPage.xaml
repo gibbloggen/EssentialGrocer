@@ -40,9 +40,10 @@
     <StackPanel Orientation="Vertical" Name="Stacker" Margin="0,0,0,12" >
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="Phone">
+                <VisualState x:Name="ThinDesktop">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
+                        <AdaptiveTrigger MinWindowWidth="550" />
+                        <AdaptiveTrigger MinWindowHeight="700" />
 
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
@@ -57,6 +58,28 @@
                     </VisualState.Setters>
 
                 </VisualState>
+                
+                
+                <VisualState x:Name="Phone">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
+                        <Setter Target="MySplitView.IsPaneOpen" Value="false" />
+                        <!--<Setter Target="Stacker.Background" Value="Blue" />-->
+                        <Setter Target="GroceryStore.Height" Value="435" />
+                        <Setter Target="GroceryStoreToGetList.Height" Value="455" />
+                        <Setter Target="MyRightMenuSorta.Height" Value="455" />
+                        <Setter Target="MyRightMenuSorta.Visibility" Value="Collapsed" />
+                        <Setter Target="TitleOfGrocer.FontSize" Value="26" />
+                    </VisualState.Setters>
+
+                </VisualState>
+
+                
+
                 <VisualState x:Name="Desktop">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="1200" />
@@ -196,7 +219,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="Coral">
-                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="93,14,0,0" Content="Add To Produce">
+                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="24,14,0,0" Content="Add To Produce">
                                 <Button.Flyout>
                                     <Flyout x:Name="AddToTheList">
                                         <StackPanel Orientation="Vertical">
