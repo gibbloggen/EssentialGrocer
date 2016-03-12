@@ -188,6 +188,41 @@ namespace EssentialGrocer
                 {
                 }
             }
+            else if (SaveMasterList.IsSelected)
+            {
+
+                XDocument doccer = new XDocument();
+                GroceryManager v = new GroceryManager();
+                doccer = v.GetXMLForSavingMaster();
+                FileSavePicker savePicker = new FileSavePicker();
+                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+                savePicker.FileTypeChoices.Add("XML markup", new List<string>() { ".xml" });
+                // Default file name if the user does not type one in or select a file to replace
+                savePicker.SuggestedFileName = "New Document";
+                StorageFile file = await savePicker.PickSaveFileAsync();
+                MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
+                if (file != null)
+                {
+                    // Prevent updates to the remote version of the file until we finish making changes and call CompleteUpdatesAsync.
+                    CachedFileManager.DeferUpdates(file);
+                    // write to file
+                    await FileIO.WriteTextAsync(file, doccer.ToString());
+                    // Let Windows know that we're finished changing the file so the other app can update the remote version of the file.
+                    // Completing updates may require Windows to ask for user input.
+                    FileUpdateStatus status = await CachedFileManager.CompleteUpdatesAsync(file);
+                    if (status == FileUpdateStatus.Complete)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                }
+            }
 
             MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
 
@@ -263,7 +298,7 @@ namespace EssentialGrocer
 
             else if (BakeSpice.IsSelected)
             {
-                WhatToAdd.Content = "Add To BakeSpice";
+                WhatToAdd.Content = "Add To Bake Spice";
                 GroceryManager.GetGroceriesByAisle("BakeSpice", Groceries);
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
@@ -303,11 +338,6 @@ namespace EssentialGrocer
                 if (GroceryManager.CheckWindowSize(Window.Current)) MyRightMenuSorta.Visibility = Visibility.Collapsed;
             }
 
-
-
-
-
-
         }
 
         private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -337,11 +367,13 @@ namespace EssentialGrocer
         private void AddToList(object sender, TappedRoutedEventArgs e)
         {
             GroceryManager.AddToList(Groceries, WhatToAdd.Content.ToString(), StoreItemDescription.Text);
+            StoreItemDescription.Text = "";
             AddToTheList.Hide();
         }
 
         private void CancelFlyout(object sender, TappedRoutedEventArgs e)
         {
+            StoreItemDescription.Text = "";
             AddToTheList.Hide();
         }
     }

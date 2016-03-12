@@ -100,6 +100,7 @@ namespace EssentialGrocer.Model
     {
         static string groceryDataFileName = "GroceryData.xml";
 
+        static int AmIRunning = 0;
         public static ObservableCollection<Grocery> observableGroceries;
 
         /*   public ObservableCollection<Grocery> observableGroceries
@@ -117,7 +118,11 @@ namespace EssentialGrocer.Model
 
 
 
-
+        public XDocument GetXMLForSavingMaster()
+        {
+            return(MasterListX);
+       
+        }
 
         /// <summary>
         /// This initialization routine took some doing, I had to realize that because it was async, it was not sending anything back, 
@@ -201,21 +206,39 @@ namespace EssentialGrocer.Model
         private async static void SaveMasterList()
         {
             Stream GroceryDataStream = null;
-            try
-            {
-                GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(groceryDataFileName, CreationCollisionOption.ReplaceExisting);
-            }
-            catch
-            {
-                System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open for Write");
+            Boolean Gotten = false;
+           // static int i;
+
+            if (AmIRunning == 0) {
+                do
+                {
+
+                    if (AmIRunning++ > 2000) Gotten = true;
+                    try
+                    {
+                        GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(groceryDataFileName, CreationCollisionOption.ReplaceExisting);
+                        Gotten = true;
+                        System.Diagnostics.Debug.WriteLine("Got it after:" + AmIRunning.ToString() + "tries");
+                    }
+                    catch
+                    {
+                        //System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open for Write");
+                        int j = 7;
+                        continue;
+
+                    }
+
+                } while (!Gotten);
+
+                MasterListX.Save(GroceryDataStream);
+                AmIRunning = 0;
+
+                System.Diagnostics.Debug.WriteLine("Got it after:" + AmIRunning.ToString() + "tries");
 
             }
+            else System.Diagnostics.Debug.WriteLine("Passed One Call");
 
-
-            MasterListX.Save(GroceryDataStream);
-
-
-        }
+        } 
 
         public static Boolean CheckWindowSize(Windows.UI.Xaml.Window CurrentWndow, int DesiredWidth = 1200)
         {
@@ -239,15 +262,113 @@ namespace EssentialGrocer.Model
                 case "Add To Bakery":
                     UpdatingMasterList(ItemDescription, "Bakery");
                     GetGroceriesByAisle("Bakery", Groceries);
-
-
                     System.Diagnostics.Debug.WriteLine("Got Bakery");
                     break;
 
 
-                case "Add To Bake/Spice":
+                case "Add To Bake Spice":
 
-                    System.Diagnostics.Debug.WriteLine("Got Bake/Spice");
+                    UpdatingMasterList(ItemDescription, "BakeSpice");
+                    GetGroceriesByAisle("BakeSpice", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Bake Spice");
+                    break;
+
+
+                case "Add To Produce":
+
+                    UpdatingMasterList(ItemDescription, "Produce");
+                    GetGroceriesByAisle("Produce", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Produce");
+                    break;
+
+                case "Add To Dairy":
+
+                    UpdatingMasterList(ItemDescription, "Dairy");
+                    GetGroceriesByAisle("Dairy", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Dairy");
+                    break;
+
+                case "Add To Beverages":
+
+                    UpdatingMasterList(ItemDescription, "Beverages");
+                    GetGroceriesByAisle("Beverages", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Beverages");
+                    break;
+
+                case "Add To Cheese":
+
+                    UpdatingMasterList(ItemDescription, "Cheese");
+                    GetGroceriesByAisle("Cheese", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Cheese");
+                    break;
+
+                case "Add To Deli":
+
+                    UpdatingMasterList(ItemDescription, "Deli");
+                    GetGroceriesByAisle("Deli", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Deli");
+                    break;
+
+                case "Add To Fish":
+
+                    UpdatingMasterList(ItemDescription, "Fish");
+                    GetGroceriesByAisle("Fish", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Fish");
+                    break;
+
+                case "Add To Meat":
+
+                    UpdatingMasterList(ItemDescription, "Meat");
+                    GetGroceriesByAisle("Meat", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Meat");
+                    break;
+
+                case "Add To Frozen":
+
+                    UpdatingMasterList(ItemDescription, "Frozen");
+                    GetGroceriesByAisle("Frozen", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Frozen");
+                    break;
+
+                case "Add To Canned Jarred":
+
+                    UpdatingMasterList(ItemDescription, "CannedJarred");
+                    GetGroceriesByAisle("CannedJarred", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Canned Jarred");
+                    break;
+
+                case "Add To Noodles Pasta":
+
+                    UpdatingMasterList(ItemDescription, "NoodlesPasta");
+                    GetGroceriesByAisle("NoodlesPasta", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Noodles Pasta");
+                    break;
+
+                case "Add To Condiments":
+
+                    UpdatingMasterList(ItemDescription, "Condiments");
+                    GetGroceriesByAisle("Condiments", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Condiments");
+                    break;
+
+                case "Add To Cereal":
+
+                    UpdatingMasterList(ItemDescription, "Cereal");
+                    GetGroceriesByAisle("Cereal", Groceries);
+
+                    System.Diagnostics.Debug.WriteLine("Got Cereal");
                     break;
 
 

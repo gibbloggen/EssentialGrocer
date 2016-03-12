@@ -109,7 +109,7 @@
                    DisplayMode="CompactOverlay"
                    
                    CompactPaneLength="0"
-                     OpenPaneLength="200"
+                     OpenPaneLength="225"
                    >
             <SplitView.Pane>
                 <ListBox SelectionMode="Single" 
@@ -131,6 +131,12 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
                             <TextBlock FontSize="24" Margin="20,0,0,0">Save</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="SaveMasterList">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Save Master</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="EmailList">
@@ -222,7 +228,7 @@
                         </StackPanel>
 
                         <ListBox Name = "MyRightMenuSorta" SelectionMode="Single" 
-                                Tapped="CategoryListBox_Tapped" Grid.Row="1" Grid.RowSpan="2"  Grid.Column="2" Visibility="Collapsed">
+                                Tapped="CategoryListBox_Tapped"   VerticalAlignment="Top" Grid.Row="0" Grid.RowSpan="2"  Grid.Column="2" Visibility="Collapsed">
 
                             <ListBoxItem Name="Bakery">
                                 <StackPanel Orientation="Horizontal">
