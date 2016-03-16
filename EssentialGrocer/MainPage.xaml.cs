@@ -366,6 +366,7 @@ namespace EssentialGrocer
 
         private void AddToList(object sender, TappedRoutedEventArgs e)
         {
+            if (StoreItemDescription.Text.Length == 0) return;
             GroceryManager.AddToList(Groceries, WhatToAdd.Content.ToString(), StoreItemDescription.Text);
             StoreItemDescription.Text = "";
             AddToTheList.Hide();

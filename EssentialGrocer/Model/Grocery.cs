@@ -172,6 +172,12 @@ namespace EssentialGrocer.Model
             // Stream grocDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(grocData);
             MasterListX = XDocument.Load(GroceryDataStream);
 
+
+            //added with Beta 2 issue
+
+            GroceryDataStream.Flush();
+            GroceryDataStream.Dispose();
+
             //GetGroceriesByAisle("Produce", PassedObservableGroceries);
 
             //ObservableCollection<Grocery> localGroceryAccess = Application.Groceries;
@@ -217,6 +223,7 @@ namespace EssentialGrocer.Model
                     try
                     {
                         GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(groceryDataFileName, CreationCollisionOption.ReplaceExisting);
+                       
                         Gotten = true;
                         System.Diagnostics.Debug.WriteLine("Got it after:" + AmIRunning.ToString() + "tries");
                     }
@@ -231,6 +238,13 @@ namespace EssentialGrocer.Model
                 } while (!Gotten);
 
                 MasterListX.Save(GroceryDataStream);
+                //added with Beta 2 issue
+                GroceryDataStream.Flush();
+                GroceryDataStream.Dispose();
+
+
+
+
                 AmIRunning = 0;
 
                 System.Diagnostics.Debug.WriteLine("Got it after:" + AmIRunning.ToString() + "tries");
