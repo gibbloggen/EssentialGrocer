@@ -37,6 +37,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using EssentialGrocer.Model;
+using Windows.UI.Xaml.Controls.Primitives;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -71,6 +72,7 @@ namespace EssentialGrocer
             GroceriesToGet = new ObservableCollection<Grocery>();
 
             GroceryManager.AsynchInitializingGroceryCollection(Groceries);
+            GroceryManager.AsynchInitializingGroceryToGet(GroceriesToGet);
             //Window.Current.Bounds.Height
 
             //MySplitView.IsPaneOpen =  GroceryManager.CheckWindowSize(Window.Current);
@@ -91,6 +93,7 @@ namespace EssentialGrocer
             GrocProduct.Isle = PutItOnTheList.Isle;
             GroceriesToGet.Add(GrocProduct);
             GroceriesToGet.Sort(p => p.Description);
+            GroceryManager.UpdateToGetList(GroceriesToGet);
 
 
         }
@@ -109,6 +112,7 @@ namespace EssentialGrocer
                     break;
                 }
             }
+            GroceryManager.UpdateToGetList(GroceriesToGet);
 
         }
 
@@ -157,8 +161,8 @@ namespace EssentialGrocer
             {
 
                 XDocument doccer = new XDocument();
-                GroceryManager v = new GroceryManager();
-                v.GetXMLForSaving(GroceriesToGet, doccer);
+                //GroceryManager v = new GroceryManager();
+                GroceryManager.GetXMLForSaving(GroceriesToGet, doccer);
                 FileSavePicker savePicker = new FileSavePicker();
                 savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
                 savePicker.FileTypeChoices.Add("XML markup", new List<string>() { ".xml" });
@@ -376,6 +380,32 @@ namespace EssentialGrocer
         {
             StoreItemDescription.Text = "";
             AddToTheList.Hide();
+        }
+
+        private void RenameToList(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void CancelRenameFlyout(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void ListRightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
+
+        }
+
+        private void ListTapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void listFlyout_Closed(object sender, object e)
+        {
+
         }
     }
 

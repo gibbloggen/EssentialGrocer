@@ -14,7 +14,7 @@
 
     <Page.Resources>
 
-        <DataTemplate x:Key="GroceryListDataTemplate" x:DataType="data:Grocery">
+        <DataTemplate x:Key="GroceryListDataTemplateTo" x:DataType="data:Grocery">
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
 
@@ -26,7 +26,28 @@
 
 
 
+       
 
+
+
+
+
+
+
+            <DataTemplate x:Key="GroceryListDataTemplateMain"  x:DataType="data:Grocery" >
+                <Grid RightTapped="ListRightTapped" Tapped="ListTapped" Background="Transparent">
+                    <Grid>
+                    <TextBlock Text="{x:Bind  Description}" HorizontalAlignment="Left" FontSize="22" />
+                </Grid>
+                    <FlyoutBase.AttachedFlyout>
+                        <Flyout Closed="listFlyout_Closed">
+                            <StackPanel>
+                            <TextBlock>Whatever</TextBlock>
+                            </StackPanel>
+                        </Flyout>
+                    </FlyoutBase.AttachedFlyout>
+                </Grid>
+            </DataTemplate>
 
 
     </Page.Resources>
@@ -213,7 +234,7 @@
                                 Name="GroceryStoreToGetList"
                                 ItemClick="GroceryStoreToGetList_ItemClick"
                                 IsItemClickEnabled="True" 
-                                ItemTemplate="{StaticResource GroceryListDataTemplate}"
+                                ItemTemplate="{StaticResource GroceryListDataTemplateTo}"
                                  >
                             </ListView>
                         </StackPanel>
@@ -245,7 +266,10 @@
                              Name="GroceryStore" 
                              ItemClick="GroceryStore_ItemClick"
                              IsItemClickEnabled="True" 
-                             ItemTemplate="{StaticResource GroceryListDataTemplate}">
+                             ItemTemplate="{StaticResource GroceryListDataTemplateMain}">
+                               
+                                
+
                             </ListView>
 
                         </StackPanel>

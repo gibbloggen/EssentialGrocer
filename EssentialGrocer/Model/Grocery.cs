@@ -99,8 +99,10 @@ namespace EssentialGrocer.Model
 
     {
         static string groceryDataFileName = "GroceryData.xml";
+        static string groceryListTempFileName = "GE_Temp.xml";
 
         static int AmIRunning = 0;
+        static int AmIRunningToGet = 0;
         public static ObservableCollection<Grocery> observableGroceries;
 
         /*   public ObservableCollection<Grocery> observableGroceries
@@ -117,6 +119,13 @@ namespace EssentialGrocer.Model
         }
 
 
+        private static XDocument shoppingListX = null;
+        public static XDocument ShoppingListX
+        {
+            get { return shoppingListX; }
+            set { shoppingListX = value; }
+        }
+
 
         public XDocument GetXMLForSavingMaster()
         {
@@ -124,12 +133,65 @@ namespace EssentialGrocer.Model
        
         }
 
+        // GroceryManager.UpdateToGetList(GroceriesToGet);
+
+        public async static void UpdateToGetList(ObservableCollection<Grocery> ToGetList)
+        {
+            Stream ToGetDataStream = null;
+            Boolean Gotten = false;
+            XDocument SaveThatTemp = new XDocument();
+            // static int i;
+
+            if (AmIRunningToGet == 0)
+            {
+                do
+                {
+
+                    if (AmIRunningToGet++ > 2) Gotten = true;
+                    try
+                    {
+                        ToGetDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(groceryListTempFileName, CreationCollisionOption.ReplaceExisting);
+
+                        Gotten = true;
+                        System.Diagnostics.Debug.WriteLine("Got it after:" + AmIRunning.ToString() + "tries");
+                    }
+                    catch
+                    {
+                        //System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open for Write");
+                        int j = 7;
+                        continue;
+
+                    }
+
+                } while (!Gotten);
+
+
+                GetXMLForSaving(ToGetList, SaveThatTemp);
+                SaveThatTemp.Save(ToGetDataStream);
+                //added with Beta 2 issue
+                ToGetDataStream.Flush();
+                ToGetDataStream.Dispose();
+
+
+
+
+                AmIRunningToGet = 0;
+
+                System.Diagnostics.Debug.WriteLine("Got it after:" + AmIRunning.ToString() + "tries");
+
+            }
+            else System.Diagnostics.Debug.WriteLine("Passed One Call");
+
+
+
+
+        }
         /// <summary>
         /// This initialization routine took some doing, I had to realize that because it was async, it was not sending anything back, 
         /// nor is it stopping the calling routine, hence async :-)  So, I am working with putting anything I want to follow these calculations
         /// either called in this method beyond the await, if it has to be done after the async calulations, or, in this case, data reads.
         /// </summary>
-        public async static void AsynchInitializingGroceryCollection(ObservableCollection<Grocery> merde)
+        public async static void AsynchInitializingGroceryCollection(ObservableCollection<Grocery> ProduceCategory)
         {
 
             string IsleFor = "Produce";
@@ -182,7 +244,8 @@ namespace EssentialGrocer.Model
 
             //ObservableCollection<Grocery> localGroceryAccess = Application.Groceries;
 
-            merde.Clear();
+           
+           ProduceCategory.Clear();
 
             var q = from b in MasterListX.Descendants("product")
                     select new
@@ -196,8 +259,8 @@ namespace EssentialGrocer.Model
             q = q.OrderBy(p => p.Description);
             foreach (var grocery in q)
                 if (grocery.Isle == IsleFor)
-                    merde.Add(new Grocery { UPC_Code = grocery.UPC_Code, Description = grocery.Description, Isle = grocery.Isle });
-
+                    ProduceCategory.Add(new Grocery { UPC_Code = grocery.UPC_Code, Description = grocery.Description, Isle = grocery.Isle });
+                   
 
 
 
@@ -207,6 +270,90 @@ namespace EssentialGrocer.Model
 
 
         }
+
+
+        public async static void AsynchInitializingGroceryToGet(ObservableCollection<Grocery> TheOldListCategory)
+        {
+
+            bool newFile = false;
+            Stream ShoppingDataStream = null;
+            try
+            {
+                ShoppingDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(groceryListTempFileName);
+            }
+            catch
+            {
+                System.Diagnostics.Debug.WriteLine("Couldn't get the temp List open");
+                try
+                {
+
+
+
+                    ShoppingDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(groceryListTempFileName,CreationCollisionOption.ReplaceExisting);
+                    newFile = true;
+/*
+                    string fileName = groceryListTempFileName;
+                    string sourcePath = @".\Model";
+                    string targetPath = ApplicationData.Current.LocalFolder.Path;
+                    string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+                    if (!System.IO.Directory.Exists(targetPath))
+                    {
+                        System.Diagnostics.Debug.WriteLine("No Path at local folder" + targetPath);
+
+                    }
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(groceryDataFileName);
+                    */
+                }
+                catch
+                {
+                    System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing reset");
+
+                }
+            }
+
+            if (ShoppingDataStream.Length == 0) newFile = true;
+
+            //This redundent code with GetGroceryByIsle, for now I am using it to handle the asyncrhonization.
+            //That the observableGroceries is static throughout the class, will give that flexibility
+
+            // Stream grocDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(grocData);
+            if(!newFile)
+              ShoppingListX = XDocument.Load(ShoppingDataStream);
+
+
+            //added with Beta 2 issue
+
+            ShoppingDataStream.Flush();
+            ShoppingDataStream.Dispose();
+
+            //GetGroceriesByAisle("Produce", PassedObservableGroceries);
+
+            //ObservableCollection<Grocery> localGroceryAccess = Application.Groceries;
+
+
+            //ProduceCategory.Clear();
+            if (!newFile)
+            {
+                var q = from b in ShoppingListX.Descendants("product")
+                        select new
+                        {
+                            UPC_Code = (string)b.Element("UPC_Code").Value,
+                            Description = (string)b.Element("Description").Value,
+                            Isle = (string)b.Element("Isle").Value,
+                        };
+
+                //q = q.Where(p => p.Isle == IsleFor).OrderBy(p => p.Description);
+                q = q.OrderBy(p => p.Description);
+                foreach (var grocery in q)
+                {
+                    TheOldListCategory.Add(new Grocery { UPC_Code = grocery.UPC_Code, Description = grocery.Description, Isle = grocery.Isle });
+
+                }
+            }
+        }
+
 
 
         private async static void SaveMasterList()
@@ -219,7 +366,7 @@ namespace EssentialGrocer.Model
                 do
                 {
 
-                    if (AmIRunning++ > 2000) Gotten = true;
+                    if (AmIRunning++ > 2) Gotten = true;
                     try
                     {
                         GroceryDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(groceryDataFileName, CreationCollisionOption.ReplaceExisting);
@@ -537,7 +684,7 @@ namespace EssentialGrocer.Model
 
         //This is a brute force method of creating xml file to save on the system.
         //Can probably be done more Elegantly, but it works.
-        public void GetXMLForSaving(ObservableCollection<Grocery> GatherGroceries, XDocument Saviour)
+        public static void GetXMLForSaving(ObservableCollection<Grocery> GatherGroceries, XDocument Saviour)
         {
 
             XElement z = new XElement("SavedList");
@@ -546,7 +693,7 @@ namespace EssentialGrocer.Model
 
             foreach (Grocery j in GatherGroceries)
             {
-                XElement k = new XElement("Product",
+                XElement k = new XElement("product",
                     new XElement("UPC_Code", j.UPC_Code),
                     new XElement("Description", j.Description),
                     new XElement("Isle", j.Isle));
