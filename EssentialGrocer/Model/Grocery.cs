@@ -356,7 +356,7 @@ namespace EssentialGrocer.Model
 
 
 
-        private async static void SaveMasterList()
+        public async static void SaveMasterList()
         {
             Stream GroceryDataStream = null;
             Boolean Gotten = false;

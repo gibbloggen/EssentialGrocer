@@ -57,6 +57,7 @@ namespace EssentialGrocer
         //the change is showing on the list on the screen.
         private ObservableCollection<Grocery> GroceriesToGet;
         private ObservableCollection<Grocery> Groceries;
+        private static string j = "";
 
         //public static ObservableCollection<Grocery> Groceries;
 
@@ -389,12 +390,18 @@ namespace EssentialGrocer
 
         private void CancelRenameFlyout(object sender, TappedRoutedEventArgs e)
         {
-
+           
         }
 
         private void ListRightTapped(object sender, RightTappedRoutedEventArgs e)
         {
+            // FrameworkElement j = sender;
+        //FlysDescription.Text = ProductDescription.Text;
+           
+            
             FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
+            TextBlock r = (TextBlock)e.OriginalSource;
+            j = r.Text;
 
         }
 
@@ -405,6 +412,42 @@ namespace EssentialGrocer
 
         private void listFlyout_Closed(object sender, object e)
         {
+
+        }
+
+        private void UpdateItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+           // var RemoveItFromTheList = (Grocery)e.ClickedItem;
+
+           // foreach (Grocery product in Groceries)
+            //{
+              //  if (product.Description == ProductDescription.Text)
+                //{
+                  //  product.Description = FlysDescription.Text;
+                    //GroceryManager.SaveMasterList();
+           //         GroceryManager.GetGroceriesByAisle(product.Isle, Groceries);
+             //       break;
+         //       }
+           /// }
+           
+
+        }
+
+        private void CancelUpdate_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            // FlysDescription.Text = "";
+            // RenameFlyOut.Hide();
+
+            Button j = (Button)sender;
+            StackPanel z = (StackPanel)j.Parent;
+            StackPanel g = (StackPanel)z.Parent;
+           FlyoutBase.GetAttachedFlyout(g).Hide();
+            
+            //q.Hide();
+
+           // FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
+          Flyout huh = (Flyout) FlyoutBase.GetAttachedFlyout(j);
+          huh.Hide();
 
         }
     }
