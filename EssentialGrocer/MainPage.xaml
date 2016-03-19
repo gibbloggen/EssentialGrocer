@@ -283,13 +283,13 @@
 
                                         <Grid Name="holdingGrid" RightTapped="ListRightTapped" Tapped="ListTapped" Background="Transparent">
 
-                                            <Grid>
+                                            <Grid Name="ThisGrid">
 
                                                 <TextBlock Name="ProductDescription" Text="{x:Bind  Description}" HorizontalAlignment="Left" FontSize="22" />
                                             </Grid>
 
                                             <FlyoutBase.AttachedFlyout >
-                                                <Flyout Closed="listFlyout_Closed" x:Name="RenameFlyOut" >
+                                                <Flyout  x:Name="RenameFlyOut" >
                                                     <StackPanel Orientation="Vertical" Width="200">
                                                         <TextBlock Margin="57,0,0,5">Rename Item</TextBlock>
                                                         <TextBox Name="FlysDescription" Text="{x:Bind  Description}"></TextBox>

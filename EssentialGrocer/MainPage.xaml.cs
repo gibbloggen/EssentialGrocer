@@ -401,8 +401,16 @@ namespace EssentialGrocer
             
             FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
             TextBlock r = (TextBlock)e.OriginalSource;
-            j = r.Text;
-
+              j = r.Text;
+            int i = 0;
+               foreach(var zzz in GroceryStore.Items)
+            {
+                Type fff = zzz.GetType();
+               // if (zzz.Description == j)
+                 //   break;
+                //i++;
+            }
+           // Grocery ggg = GroceryStore.Items(i);
         }
 
         private void ListTapped(object sender, TappedRoutedEventArgs e)
@@ -417,19 +425,26 @@ namespace EssentialGrocer
 
         private void UpdateItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
-           // var RemoveItFromTheList = (Grocery)e.ClickedItem;
 
-           // foreach (Grocery product in Groceries)
-            //{
-              //  if (product.Description == ProductDescription.Text)
-                //{
-                  //  product.Description = FlysDescription.Text;
-                    //GroceryManager.SaveMasterList();
-           //         GroceryManager.GetGroceriesByAisle(product.Isle, Groceries);
-             //       break;
-         //       }
-           /// }
-           
+            Button getButton = (Button)sender;
+            StackPanel getterDone = (StackPanel)getButton.Parent;
+            StackPanel getterReallyDone = (StackPanel)getterDone.Parent;
+            TextBox GrabThisShit = (TextBox)getterReallyDone.FindName("FlysDescription");
+
+
+            string Isle =  GroceryManager.UpdatingDescriptionMasterList(GrabThisShit.Text, j);
+            GroceryManager.GetGroceriesByAisle(Isle, Groceries);
+            GroceryManager.SaveMasterList();
+
+            FlyoutPresenter w = (FlyoutPresenter)getterReallyDone.Parent;
+            Popup t = (Popup)w.Parent;
+            t.IsOpen = false;
+
+
+            // var RemoveItFromTheList = (Grocery)e.ClickedItem;
+
+
+
 
         }
 
@@ -438,17 +453,22 @@ namespace EssentialGrocer
             // FlysDescription.Text = "";
             // RenameFlyOut.Hide();
 
-            Button j = (Button)sender;
+          Button j = (Button)sender;
             StackPanel z = (StackPanel)j.Parent;
-            StackPanel g = (StackPanel)z.Parent;
-           FlyoutBase.GetAttachedFlyout(g).Hide();
-            
+              StackPanel g = (StackPanel)z.Parent;
+            FlyoutPresenter w = (FlyoutPresenter)g.Parent;
+            Popup t = (Popup)w.Parent;
+            t.IsOpen = false;
+
+
             //q.Hide();
 
-           // FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
-          Flyout huh = (Flyout) FlyoutBase.GetAttachedFlyout(j);
-          huh.Hide();
+            //FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
 
+           // Flyout huh =  FlyoutBase.GetAttachedFlyout(w);
+         // //  huh.Hide();
+         //  ListView xxx = GroceryStore;
+        //    var jjjj = xxx.Items;
         }
     }
 

@@ -613,6 +613,35 @@ namespace EssentialGrocer.Model
 
 
         }*/
+        public static string UpdatingDescriptionMasterList(string newDescription, string oldDescription)
+        {
+            var items = from item in masterListX.Descendants("product")
+                        where item.Element("Description").Value == oldDescription
+                        select item;
+
+            foreach (XElement itemElement in items)
+            {
+                itemElement.SetElementValue("Description", newDescription);
+
+                return (itemElement.Element("Isle").Value);
+            }
+            return ("");
+            // string grocData = "GroceryData.xml";
+            //  Stream  grocDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(grocData);
+
+            //  XDocument masterListX = XDocument.Load(grocDataStream);
+            // grocDataStream = null;
+            //XElement newProduct = masterListX.Element("SuperMarket");
+
+            // Random q = new Random();
+            // Int32 numberPlease = q.Next(99999999);
+
+
+
+
+
+        }
+
 
         public static void UpdatingMasterList(string describer, string IsleEr)
         {
