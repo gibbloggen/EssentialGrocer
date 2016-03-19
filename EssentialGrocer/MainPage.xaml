@@ -228,7 +228,7 @@
                                HorizontalAlignment="Center"
                                FontSize="23"
                                    > 
-                                    To Get At Store
+                                    To Get
                         </TextBlock>
 
                         <TextBlock  Grid.Column="1" 
@@ -236,7 +236,7 @@
                              VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     FontSize="23">
-                            Do We Need it?
+                           Need it?
                         </TextBlock>
                         <StackPanel Grid.Column="0" Grid.Row="1" Background="CadetBlue">
                             <ListView 
@@ -250,7 +250,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="Coral">
-                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="24,14,0,0" Content="Add To Produce">
+                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="24,14,0,0" Content="Add To Produce"  Foreground="White" Background="#FF365353">
                                 <Button.Flyout>
                                     <Flyout x:Name="AddToTheList">
                                         <StackPanel Orientation="Vertical">
@@ -271,21 +271,22 @@
                                 </Button.Flyout>
 
                             </Button>
-
+                          
                             <ListView ItemsSource="{x:Bind Groceries, Mode=OneWay}"  
                              Name="GroceryStore"  
                               ItemClick="GroceryStore_ItemClick" 
                              IsItemClickEnabled="True"  
+                                      
                                     
                           >
                                 <ListView.ItemTemplate>
                                     <DataTemplate  x:DataType="data:Grocery">
 
-                                        <Grid Name="holdingGrid" RightTapped="ListRightTapped" Tapped="ListTapped" Background="Transparent">
-
-                                            <Grid Name="ThisGrid">
-
-                                                <TextBlock Name="ProductDescription" Text="{x:Bind  Description}" HorizontalAlignment="Left" FontSize="22" />
+                                        <Grid Name="holdingGrid" RightTapped="ListRightTapped" Tapped="ListTapped" Background="Transparent" VariableSizedWrapGrid.ColumnSpan="2">
+                                              
+                                                <Grid Name="ThisGrid" >
+                                                    
+                                                    <TextBlock Name="ProductDescription" Text="{x:Bind  Description}" HorizontalAlignment="Left" FontSize="22" Width="402"/>
                                             </Grid>
 
                                             <FlyoutBase.AttachedFlyout >
@@ -308,7 +309,7 @@
                                 </ListView.ItemTemplate>
 
                             </ListView>
-
+                
 
                         </StackPanel>
 

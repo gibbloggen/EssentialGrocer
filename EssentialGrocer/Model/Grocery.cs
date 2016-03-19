@@ -821,7 +821,7 @@ namespace EssentialGrocer.Model
             else {
                 ObservableGroceries = new ObservableCollection<Grocery>();
             }
-            var q = from b in GrocXML.Descendants("Product")
+            var q = from b in GrocXML.Descendants("product")
                     select new
                     {
                         UPC_Code = (string)b.Element("UPC_Code").Value,
