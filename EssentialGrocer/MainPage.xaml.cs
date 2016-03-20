@@ -65,7 +65,7 @@ namespace EssentialGrocer
         {
             this.InitializeComponent();
 
-            // this.SizeChanged += MainPage_SizeChanged;
+            
 
             Groceries = new ObservableCollection<Grocery>();
             //GroceryManager.GetGroceriesByAisle("Produce", Groceries);
@@ -74,10 +74,6 @@ namespace EssentialGrocer
 
             GroceryManager.AsynchInitializingGroceryCollection(Groceries);
             GroceryManager.AsynchInitializingGroceryToGet(GroceriesToGet);
-            //Window.Current.Bounds.Height
-
-            //MySplitView.IsPaneOpen =  GroceryManager.CheckWindowSize(Window.Current);
-            //CategorySplitView.IsPaneOpen = GroceryManager.CheckWindowSize(Window.Current);
         }
 
 
@@ -351,13 +347,13 @@ namespace EssentialGrocer
             if (e.NewSize.Width > 700)
             {
                 MySplitView.IsPaneOpen = true;
-                //CategorySplitView.IsPaneOpen = true;
+              
 
             }
             else
             {
                 MySplitView.IsPaneOpen = false;
-                //CategorySplitView.IsPaneOpen = false;
+              
 
             }
             return;
@@ -395,22 +391,13 @@ namespace EssentialGrocer
 
         private void ListRightTapped(object sender, RightTappedRoutedEventArgs e)
         {
-            // FrameworkElement j = sender;
-        //FlysDescription.Text = ProductDescription.Text;
+           
            
             
             FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
             TextBlock r = (TextBlock)e.OriginalSource;
               j = r.Text;
-            int i = 0;
-               foreach(var zzz in GroceryStore.Items)
-            {
-                Type fff = zzz.GetType();
-               // if (zzz.Description == j)
-                 //   break;
-                //i++;
-            }
-           // Grocery ggg = GroceryStore.Items(i);
+ 
         }
 
         private void ListTapped(object sender, TappedRoutedEventArgs e)
@@ -429,10 +416,10 @@ namespace EssentialGrocer
             Button getButton = (Button)sender;
             StackPanel getterDone = (StackPanel)getButton.Parent;
             StackPanel getterReallyDone = (StackPanel)getterDone.Parent;
-            TextBox GrabThisShit = (TextBox)getterReallyDone.FindName("FlysDescription");
+            TextBox GrabDescription = (TextBox)getterReallyDone.FindName("FlysDescription");
 
-
-            string Isle =  GroceryManager.UpdatingDescriptionMasterList(GrabThisShit.Text, j);
+            if (GrabDescription.Text == "") return;
+            string Isle =  GroceryManager.UpdatingDescriptionMasterList(GrabDescription.Text, j);
             GroceryManager.GetGroceriesByAisle(Isle, Groceries);
             GroceryManager.SaveMasterList();
 
@@ -441,7 +428,7 @@ namespace EssentialGrocer
             t.IsOpen = false;
 
 
-            // var RemoveItFromTheList = (Grocery)e.ClickedItem;
+         
 
 
 
@@ -450,25 +437,17 @@ namespace EssentialGrocer
 
         private void CancelUpdate_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            // FlysDescription.Text = "";
-            // RenameFlyOut.Hide();
+           
 
-          Button j = (Button)sender;
+            Button j = (Button)sender;
             StackPanel z = (StackPanel)j.Parent;
-              StackPanel g = (StackPanel)z.Parent;
+            StackPanel g = (StackPanel)z.Parent;
             FlyoutPresenter w = (FlyoutPresenter)g.Parent;
             Popup t = (Popup)w.Parent;
             t.IsOpen = false;
 
 
-            //q.Hide();
-
-            //FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
-
-           // Flyout huh =  FlyoutBase.GetAttachedFlyout(w);
-         // //  huh.Hide();
-         //  ListView xxx = GroceryStore;
-        //    var jjjj = xxx.Items;
+           
         }
     }
 

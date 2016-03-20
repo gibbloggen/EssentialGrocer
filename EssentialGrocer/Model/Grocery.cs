@@ -158,7 +158,7 @@ namespace EssentialGrocer.Model
                     catch
                     {
                         //System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open for Write");
-                        int j = 7;
+                       // int j = 7;
                         continue;
 
                     }
@@ -377,7 +377,7 @@ namespace EssentialGrocer.Model
                     catch
                     {
                         //System.Diagnostics.Debug.WriteLine("Couldn't get the darn thing open for Write");
-                        int j = 7;
+                       // int j = 7;
                         continue;
 
                     }
@@ -661,7 +661,7 @@ namespace EssentialGrocer.Model
                 new XElement("Description", describer),
                 new XElement("UPC_Code", numberPlease)));
 
-            int r = 1;
+            //int r = 1;
 
             //Stream grocDataStreamWrite = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForWriteAsync(grocData, CreationCollisionOption.ReplaceExisting);
             //masterListX.Save(grocDataStreamWrite);
@@ -733,7 +733,7 @@ namespace EssentialGrocer.Model
         }
 
         // This function was just used for development, will be deleted in future versions.
-        public static List<Grocery> GetGroceries()
+      /*  public static List<Grocery> GetGroceries()
         {
             var Groceries = new List<Grocery>();
 
@@ -744,7 +744,7 @@ namespace EssentialGrocer.Model
             Groceries.Add(new Grocery { UPC_Code = "1111115", Description = "Seltzer", Isle = "Produce" });
 
             return Groceries;
-        }
+        }*/
 
 
 
@@ -845,7 +845,7 @@ namespace EssentialGrocer.Model
 
 
         // This was a paste from somewhere.  I believe it is going to be another delete,,,
-        public static async Task<byte[]> ReadFile(StorageFile file)
+    /*    public static async Task<byte[]> ReadFile(StorageFile file)
 
         {
 
@@ -873,12 +873,12 @@ namespace EssentialGrocer.Model
 
             return fileBytes;
 
-        }
+        }*/
 
 
         // This works, but is dependent on the file being in Model folder of the bin.
         // This is going to be updated to have this list an others in the app folder for the user.
-        public static ObservableCollection<Grocery> GetGroceriesFromXML()
+       /* public static ObservableCollection<Grocery> GetGroceriesFromXML()
 
         {
 
@@ -903,11 +903,11 @@ namespace EssentialGrocer.Model
 
             return j;
 
-        }
+        }*/
 
 
         // I think this was just for testing, will delete in next cleanup.
-        public class GroceryManagerObservable
+     /*   public class GroceryManagerObservable
         {
 
             public static ObservableCollection<Grocery> GetThemGroceries()
@@ -923,6 +923,6 @@ namespace EssentialGrocer.Model
 
                 return Groceries;
             }
-        }
+        }*/
     }
 }
