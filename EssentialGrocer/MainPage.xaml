@@ -145,7 +145,7 @@
 
             <TextBlock Name="TitleOfGrocer"
                    RelativePanel.AlignHorizontalCenterWithPanel="True"
-                   Text="Essential Grocer" FontSize="32" />
+                   Text="Essential Grocer" FontSize="32" FontWeight="ExtraBold"/>
 
             <Button Name="CategoryButton" 
                     RelativePanel.AlignRightWithPanel="True"
@@ -171,41 +171,35 @@
 
                     <ListBoxItem Name="NewList">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE80F;" />
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE78B;" />
                             <TextBlock FontSize="24" Margin="20,0,0,0">New</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="OpenList">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE898;" />
                             <TextBlock FontSize="24" Margin="20,0,0,0">Open</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="SaveList">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE78C;" />
                             <TextBlock FontSize="24" Margin="20,0,0,0">Save</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="SaveMasterList">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="42" Text="&#xE78C;" />
                             <TextBlock FontSize="24" Margin="20,0,0,0">Save Master</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Name="EmailList">
+                    <ListBoxItem Name="Share">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
-                            <TextBlock FontSize="24" Margin="20,0,0,0">Email</TextBlock>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE72D;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Share</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Name="PrintList">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE1CE;" />
-                            <TextBlock FontSize="24" Margin="20,0,0,0">Print</TextBlock>
-                        </StackPanel>
-                    </ListBoxItem>
-                </ListBox>
+                           </ListBox>
             </SplitView.Pane>
             <SplitView.Content >
                 <StackPanel Orientation="Vertical">
@@ -227,6 +221,7 @@
                                VerticalAlignment="Center" 
                                HorizontalAlignment="Center"
                                FontSize="23"
+                                FontWeight="Bold" 
                                    > 
                                     To Get
                         </TextBlock>
@@ -235,7 +230,8 @@
                              Name="NeedItHeader" 
                              VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
-                                    FontSize="23">
+                                    FontSize="23"
+                                    FontWeight="Bold">
                            Need it?
                         </TextBlock>
                         <StackPanel Grid.Column="0" Grid.Row="1" Background="CadetBlue">
@@ -250,8 +246,19 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="Coral">
-                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="24,14,0,0" Content="Add To Produce"  Foreground="White" Background="#FF365353">
-                                <Button.Flyout>
+                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="18,8,0,0"   Foreground="White" Background="#FFE03737">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE710;" Margin="10,5,10,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
+                                        <TextBlock Name="AddCategoryText" FontSize ="18" Text="Produce" Margin="10,5,25,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
+                                    </StackPanel>
+                                </Button.Content>
+
+                              
+                                    
+                                    
+                                    
+                                    <Button.Flyout>
                                     <Flyout x:Name="AddToTheList">
                                         <StackPanel Orientation="Vertical">
 
@@ -261,8 +268,9 @@
                                                 <TextBox Name="StoreItemDescription" Width="208" PlaceholderText="Putting On Master List"  />
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button Content="Add To Master List" Tapped="AddToList" Margin="20,20,20,20"/>
-                                                <Button Content="Cancel" Tapped="CancelFlyout" Margin="20,20,20,20" />
+
+                                                <Button  FontFamily="Segoe MDL2 Assets" FontSize="16" Content="&#xE710;" Tapped="AddToList" Margin="72,10,20,10"/>
+                                                <Button FontFamily="Segoe MDL2 Assets" FontSize="16" Content="&#xE711;" Tapped="CancelFlyout" Margin="20,10,20,10" />
                                             </StackPanel>
                                         </StackPanel>
 

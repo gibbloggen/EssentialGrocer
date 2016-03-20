@@ -420,14 +420,14 @@ namespace EssentialGrocer.Model
             switch (IsleCategory)
             {
 
-                case "Add To Bakery":
+                case "Bakery":
                     UpdatingMasterList(ItemDescription, "Bakery");
                     GetGroceriesByAisle("Bakery", Groceries);
                     System.Diagnostics.Debug.WriteLine("Got Bakery");
                     break;
 
 
-                case "Add To Bake Spice":
+                case "Spice":
 
                     UpdatingMasterList(ItemDescription, "BakeSpice");
                     GetGroceriesByAisle("BakeSpice", Groceries);
@@ -436,7 +436,7 @@ namespace EssentialGrocer.Model
                     break;
 
 
-                case "Add To Produce":
+                case "Produce":
 
                     UpdatingMasterList(ItemDescription, "Produce");
                     GetGroceriesByAisle("Produce", Groceries);
@@ -444,7 +444,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Produce");
                     break;
 
-                case "Add To Dairy":
+                case "Dairy":
 
                     UpdatingMasterList(ItemDescription, "Dairy");
                     GetGroceriesByAisle("Dairy", Groceries);
@@ -452,7 +452,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Dairy");
                     break;
 
-                case "Add To Beverages":
+                case "Beverages":
 
                     UpdatingMasterList(ItemDescription, "Beverages");
                     GetGroceriesByAisle("Beverages", Groceries);
@@ -460,7 +460,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Beverages");
                     break;
 
-                case "Add To Cheese":
+                case "Cheese":
 
                     UpdatingMasterList(ItemDescription, "Cheese");
                     GetGroceriesByAisle("Cheese", Groceries);
@@ -468,7 +468,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Cheese");
                     break;
 
-                case "Add To Deli":
+                case "Deli":
 
                     UpdatingMasterList(ItemDescription, "Deli");
                     GetGroceriesByAisle("Deli", Groceries);
@@ -476,7 +476,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Deli");
                     break;
 
-                case "Add To Fish":
+                case "Fish":
 
                     UpdatingMasterList(ItemDescription, "Fish");
                     GetGroceriesByAisle("Fish", Groceries);
@@ -484,7 +484,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Fish");
                     break;
 
-                case "Add To Meat":
+                case "Meat":
 
                     UpdatingMasterList(ItemDescription, "Meat");
                     GetGroceriesByAisle("Meat", Groceries);
@@ -492,7 +492,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Meat");
                     break;
 
-                case "Add To Frozen":
+                case "Frozen":
 
                     UpdatingMasterList(ItemDescription, "Frozen");
                     GetGroceriesByAisle("Frozen", Groceries);
@@ -500,7 +500,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Frozen");
                     break;
 
-                case "Add To Canned Jarred":
+                case "Jarred":
 
                     UpdatingMasterList(ItemDescription, "CannedJarred");
                     GetGroceriesByAisle("CannedJarred", Groceries);
@@ -508,7 +508,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Canned Jarred");
                     break;
 
-                case "Add To Noodles Pasta":
+                case "Noodles":
 
                     UpdatingMasterList(ItemDescription, "NoodlesPasta");
                     GetGroceriesByAisle("NoodlesPasta", Groceries);
@@ -516,7 +516,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Noodles Pasta");
                     break;
 
-                case "Add To Condiments":
+                case "Condiments":
 
                     UpdatingMasterList(ItemDescription, "Condiments");
                     GetGroceriesByAisle("Condiments", Groceries);
@@ -524,7 +524,7 @@ namespace EssentialGrocer.Model
                     System.Diagnostics.Debug.WriteLine("Got Condiments");
                     break;
 
-                case "Add To Cereal":
+                case "Cereal":
 
                     UpdatingMasterList(ItemDescription, "Cereal");
                     GetGroceriesByAisle("Cereal", Groceries);
