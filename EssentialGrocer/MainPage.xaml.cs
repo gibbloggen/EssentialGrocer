@@ -57,6 +57,7 @@ namespace EssentialGrocer
         //the change is showing on the list on the screen.
         private ObservableCollection<Grocery> GroceriesToGet;
         private ObservableCollection<Grocery> Groceries;
+        private Grocery UndoGrocery;
         private static string j = "";
 
         //public static ObservableCollection<Grocery> Groceries;
@@ -91,7 +92,7 @@ namespace EssentialGrocer
             GroceriesToGet.Add(GrocProduct);
             GroceriesToGet.Sort(p => p.Description);
             GroceryManager.UpdateToGetList(GroceriesToGet);
-
+           
 
         }
 
@@ -99,11 +100,12 @@ namespace EssentialGrocer
 
         private void GroceryStoreToGetList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var RemoveItFromTheList = (Grocery)e.ClickedItem;
+            //Added UndoGrocery Here, so if you accidently delete, you can now put it back on.
+            UndoGrocery = (Grocery)e.ClickedItem;
 
             foreach (Grocery product in GroceriesToGet)
             {
-                if (product.UPC_Code == RemoveItFromTheList.UPC_Code)
+                if (product.UPC_Code == UndoGrocery.UPC_Code)
                 {
                     GroceriesToGet.Remove(product);
                     break;
@@ -448,6 +450,23 @@ namespace EssentialGrocer
 
 
            
+        }
+
+        private void Undo_Click(object sender, TappedRoutedEventArgs e)
+        {
+            if (UndoGrocery != null)
+            {
+                var GrocProduct = new Grocery();
+                GrocProduct.UPC_Code = UndoGrocery.UPC_Code;
+                GrocProduct.Description = UndoGrocery.Description;
+                GrocProduct.Isle = UndoGrocery.Isle;
+                GroceriesToGet.Add(GrocProduct);
+                GroceriesToGet.Sort(p => p.Description);
+                GroceryManager.UpdateToGetList(GroceriesToGet);
+                UndoGrocery = null;
+
+            }
+            
         }
     }
 

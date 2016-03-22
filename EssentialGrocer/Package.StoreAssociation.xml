@@ -363,6 +363,8 @@
       <ReservedName>Essential Grocer</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
-  <AccountPackageIdentityNames />
+  <AccountPackageIdentityNames>
+    <MainPackageIdentityName>23676EssentialSoftware.DiabetesEssentials</MainPackageIdentityName>
+  </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9NBLGGH4QFGC" />
 </StoreAssociation>

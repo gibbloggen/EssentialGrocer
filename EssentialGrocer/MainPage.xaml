@@ -24,48 +24,7 @@
 
         </DataTemplate>
 
-
-       
-
-           
-
-     
-
-
-
-
-
-
-
-
-        <!--<DataTemplate x:Key="GroceryListDataTemplateMain"  x:DataType="data:Grocery" >
-                <Grid Name="holdingGrid" RightTapped="ListRightTapped" Tapped="ListTapped" Background="Transparent">
-                    <Grid>
-                    <TextBlock Name="ProductDescription" Text="{x:Bind  Description}" HorizontalAlignment="Left" FontSize="22" />
-                </Grid>
-                    <FlyoutBase.AttachedFlyout>
-                        <Flyout Closed="listFlyout_Closed" >
-                        <StackPanel Orientation="Vertical" Width="200">
-                            <TextBlock Margin="57,0,0,5">Rename Item</TextBlock>
-                            <TextBox Name="FlysDescription"></TextBox>
-                            <StackPanel Orientation="Horizontal" Width="180" Height="45">
-                                <Button Name="UpdateItem" Tapped="UpdateItem_Tapped" Height="35" Content="Update" Margin="17,0,15,0"/>
-                            <Button Name="CancelUpdate" Tapped="CancelUpdate_Tapped" Height="35" Content="Cancel"/>
-                        </StackPanel>
-
-                        </StackPanel>
-                        </Flyout>
-                    </FlyoutBase.AttachedFlyout>
-                </Grid>
-            </DataTemplate>-->
-
-
     </Page.Resources>
-
-
-
-
-
 
 
     <StackPanel Orientation="Vertical" Name="Stacker" Margin="0,0,0,12" >
@@ -235,6 +194,18 @@
                            Need it?
                         </TextBlock>
                         <StackPanel Grid.Column="0" Grid.Row="1" Background="CadetBlue">
+                            <Button  Name="Undo" Tapped="Undo_Click"   FontSize="18" Margin="18,8,0,0"    Background="Transparent"  >
+                                <Button.Content>
+                                    <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="Aquamarine"  Padding="5" CornerRadius="15">
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE7A7;" Margin="10,5,10,5" Foreground="#FFE03737" FontWeight="ExtraBold"/>
+                                            <TextBlock Name="UndoBlock" FontSize ="18" Text="Undo" Margin="10,5,25,5" Foreground="#FFE03737" FontWeight="ExtraBold"/>
+                                        </StackPanel>
+                                    </Border>
+                                </Button.Content>
+                            </Button>
+
                             <ListView 
                                 ItemsSource="{x:Bind GroceriesToGet, Mode=OneWay}"
                                 Name="GroceryStoreToGetList"
@@ -244,14 +215,19 @@
                                  >
                             </ListView>
                         </StackPanel>
-
+                       
                         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="Coral">
-                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="18,8,0,0"   Foreground="White" Background="#FFE03737">
+                            <Button  Name="WhatToAdd" Tapped="MakeFlyout"   FontSize="18" Margin="18,8,0,0"   Foreground="White" Background="Transparent"  >
+                              
+
                                 <Button.Content>
-                                    <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE710;" Margin="10,5,10,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
-                                        <TextBlock Name="AddCategoryText" FontSize ="18" Text="Produce" Margin="10,5,25,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
-                                    </StackPanel>
+                                    <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FFE03737"  Padding="5" CornerRadius="15">
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE710;" Margin="10,5,10,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
+                                            <TextBlock Name="AddCategoryText" FontSize ="18" Text="Produce" Margin="10,5,25,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
+                                        </StackPanel>
+                                    </Border>
                                 </Button.Content>
 
                               
@@ -265,12 +241,25 @@
                                             <StackPanel Orientation="Horizontal">
 
                                                 <TextBlock Margin="20,5,20,0">New Item</TextBlock>
-                                                <TextBox Name="StoreItemDescription" Width="208" PlaceholderText="Putting On Master List"  />
+                                                <TextBox Name="StoreItemDescription" Width="208" PlaceholderText="Putting On Master List"  Background="Transparent" />
+
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal">
 
-                                                <Button  FontFamily="Segoe MDL2 Assets" FontSize="16" Content="&#xE710;" Tapped="AddToList" Margin="72,10,20,10"/>
-                                                <Button FontFamily="Segoe MDL2 Assets" FontSize="16" Content="&#xE711;" Tapped="CancelFlyout" Margin="20,10,20,10" />
+                                                <Button  FontFamily="Segoe MDL2 Assets" FontSize="22" Tapped="AddToList" Margin="72,10,20,10" Background="Transparent">
+                                                    <Button.Content>
+                                                        <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FF32AC25"  Padding="5" CornerRadius="15">
+                                                            <TextBlock>&#xE710;</TextBlock>
+                                                        </Border>
+                                                    </Button.Content>
+                                                </Button>
+                                                <Button FontFamily="Segoe MDL2 Assets" FontSize="22" Tapped="CancelFlyout" Margin="20,10,20,10" Background="Transparent">
+                                                    <Button.Content>
+                                                        <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FFDC0E0E"  Padding="5" CornerRadius="15">
+                                                            <TextBlock >&#xE711;</TextBlock>
+                                                        </Border>
+                                                    </Button.Content>
+                                                </Button>
                                             </StackPanel>
                                         </StackPanel>
 
@@ -301,10 +290,26 @@
                                                 <Flyout  x:Name="RenameFlyOut" >
                                                     <StackPanel Orientation="Vertical" Width="200">
                                                         <TextBlock Margin="57,0,0,5">Rename Item</TextBlock>
+                                                       
                                                         <TextBox Name="FlysDescription" Text="{x:Bind  Description}"></TextBox>
                                                         <StackPanel Orientation="Horizontal" Width="180" Height="45">
-                                                            <Button Name="UpdateItem" Tapped="UpdateItem_Tapped" Height="35" Content="Update" Margin="17,0,15,0"/>
-                                                            <Button Name="CancelUpdate" Tapped="CancelUpdate_Tapped" Height="35" Content="Cancel"/>
+                                                            <Button Name="UpdateItem" FontFamily="Segoe MDL2 Assets" FontSize="22" Tapped="UpdateItem_Tapped" Height="48"  Margin="17,0,15,0" Background="Transparent">
+                                                                <Button.Content>
+                                                                    <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FF32AC25"  Padding="5" CornerRadius="15">
+
+                                                                        <TextBlock> &#xE70F;</TextBlock>
+                                                                    </Border>
+                                                                </Button.Content>
+                                                            </Button>
+                                                            <Button Name="CancelUpdate" FontFamily="Segoe MDL2 Assets" FontSize="22" Tapped="CancelUpdate_Tapped" Height="48" Background="Transparent" >
+                                                            <Button.Content>
+                                                                <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FFDC0E0E"  Padding="5" CornerRadius="15">
+
+                                                                        <TextBlock>&#xE711;</TextBlock>
+                                                                </Border>
+                                                            </Button.Content>
+                                                            </Button>
+
                                                         </StackPanel>
 
                                                     </StackPanel>

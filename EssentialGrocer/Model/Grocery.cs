@@ -837,8 +837,13 @@ namespace EssentialGrocer.Model
 
             foreach (Grocery g in z)
                 ObservableGroceries.Add(new Grocery { UPC_Code = g.UPC_Code, Description = g.Description, Isle = g.Isle });
+
+
+            ObservableGroceries.Sort(p => p.Description);
+
             return;
 
+           
         }
 
 
