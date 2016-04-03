@@ -38,6 +38,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using EssentialGrocer.Model;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Foundation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -65,7 +67,7 @@ namespace EssentialGrocer
         public WorkHorse()
         {
             this.InitializeComponent();
-
+            RegisterForShare();
 
 
             Groceries = new ObservableCollection<Grocery>();
@@ -78,8 +80,30 @@ namespace EssentialGrocer
         }
 
 
+        private void RegisterForShare()
+        {
+            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            dataTransferManager.DataRequested += new TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(this.ShareTextHandler);
+            dataTransferManager.TargetApplicationChosen += datatransferManager_TargetApplicationChosen;
 
 
+        }
+        void datatransferManager_TargetApplicationChosen(DataTransferManager sender, TargetApplicationChosenEventArgs args)
+        {
+            string target = args.ApplicationName;
+
+        }
+        private void ShareTextHandler(DataTransferManager sender, DataRequestedEventArgs e)
+        {
+
+            string HTMLToGet = CreateHTML.CreateThisHTML();
+            DataRequest request = e.Request;
+            request.Data.Properties.Title = "This is your Grocery List from Essential Grocer for: " +  System.DateTime.Now.ToString();
+            request.Data.Properties.Description = "";
+            var str = HtmlFormatHelper.CreateHtmlFormat(HTMLToGet);
+            request.Data.SetHtmlFormat(str);
+
+        }
 
 
         private void GroceryStore_ItemClick(object sender, ItemClickEventArgs e)
@@ -232,7 +256,12 @@ namespace EssentialGrocer
                 Frame Switcherooni = (Frame)Parent;
                 Switcherooni.Content = new ShoppingMode();
             }
+            else if (Share.IsSelected)
+            {
 
+                DataTransferManager.ShowShareUI();
+            }
+           
             MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
 
 
