@@ -167,6 +167,8 @@ namespace EssentialGrocer.Model
 
 
                 GetXMLForSaving(ToGetList, SaveThatTemp);
+                //adding because of bug with prerelease beta 3, this squashed it ?? JL
+                ShoppingListX = SaveThatTemp;
                 SaveThatTemp.Save(ToGetDataStream);
                 //added with Beta 2 issue
                 ToGetDataStream.Flush();
@@ -319,8 +321,9 @@ namespace EssentialGrocer.Model
             //That the observableGroceries is static throughout the class, will give that flexibility
 
             // Stream grocDataStream = await Windows.Storage.ApplicationData.Current.LocalFolder.OpenStreamForReadAsync(grocData);
-            if(!newFile)
-              ShoppingListX = XDocument.Load(ShoppingDataStream);
+            if (!newFile)
+                ShoppingListX = XDocument.Load(ShoppingDataStream);
+            else shoppingListX = new XDocument();
 
 
             //added with Beta 2 issue
