@@ -59,6 +59,10 @@ namespace EssentialGrocer
         //the change is showing on the list on the screen.
         private ObservableCollection<Grocery> GroceriesToGet;
         private ObservableCollection<Grocery> Groceries;
+        //private IObservable<string>  DogEared;
+
+        public ObservableCollection<string> DogEaredCollection;
+
         private Grocery UndoGrocery;
         private static string j = "";
 
@@ -68,6 +72,10 @@ namespace EssentialGrocer
         {
             this.InitializeComponent();
             RegisterForShare();
+
+
+           DogEaredCollection = new ObservableCollection<string>();
+    
 
 
             Groceries = new ObservableCollection<Grocery>();
@@ -381,18 +389,34 @@ namespace EssentialGrocer
         private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
-            if (e.NewSize.Width > 700)
+            //JL
+           double j =  e.NewSize.Height;
+            if (true)
             {
-                MySplitView.IsPaneOpen = true;
-
-
+                GroceryStore.Height = j - 165;
+                GroceryStoreToGetList.Height = j - 165;
+                MyRightMenuSorta.Height = j - 100;
+                MySplitView.Height = j - 37;
             }
-            else
-            {
-                MySplitView.IsPaneOpen = false;
+            //else MySplitView.Height = 1000;
 
 
-            }
+            /* SetterBase q = new SetterBase(    ;
+           q.SetValue(GroceryStore.Height., e.NewSize.Height - 145);
+           Phone.Setters.Add("SetterBase item")
+
+           if (e.NewSize.Width > 700)
+           {
+               MySplitView.IsPaneOpen = true;
+
+
+           }
+           else
+           {
+               MySplitView.IsPaneOpen = false;
+
+
+           }*/
             return;
 
         }

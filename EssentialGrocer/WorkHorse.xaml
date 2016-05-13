@@ -7,6 +7,7 @@
      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:data="using:EssentialGrocer.Model" 
     mc:Ignorable="d" 
+    SizeChanged="MainPage_SizeChanged" 
 
  
      >
@@ -40,6 +41,7 @@
                         <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="false" />
                         <!--<Setter Target="Stacker.Background" Value="Blue" />-->
+                        
                         <Setter Target="GroceryStore.Height" Value="715" />
                         <Setter Target="GroceryStoreToGetList.Height" Value="715" />
                         <Setter Target="MyRightMenuSorta.Height" Value="755" />
@@ -53,21 +55,20 @@
                 <VisualState x:Name="Phone">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
-
+                        <AdaptiveTrigger MinWindowHeight="0" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
+                    <VisualState.Setters >
                         <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="false" />
-                        <!--<Setter Target="Stacker.Background" Value="Blue" />-->
-                        <Setter Target="GroceryStore.Height" Value="415" />
+                       <!-- <Setter Target="GroceryStore.Height"  Value= "{DynamicResource DogEared}"/>
                         <Setter Target="GroceryStoreToGetList.Height" Value="415" />
-                        <Setter Target="MyRightMenuSorta.Height" Value="455" />
+                        <Setter Target="MyRightMenuSorta.Height" Value="455" />-->
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Collapsed" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="26" />
                     </VisualState.Setters>
 
                 </VisualState>
-
+               
 
 
                 <VisualState x:Name="Desktop">
@@ -79,9 +80,10 @@
                         <Setter Target="MySplitView.IsPaneOpen" Value="true" />
                         <!-- <Setter Target="Stacker.Background" Value="Red" />-->
                         <Setter Target="GroceryStore.Height" Value="800" />
-                        <Setter Target="GroceryStoreToGetList.Height" Value="825" />
-                        <Setter Target="MyRightMenuSorta.Visibility" Value="Visible" />
+                        <Setter Target="GroceryStoreToGetList.Height" Value="800" />
+                        
                         <Setter Target="MyRightMenuSorta.Height" Value="825" />
+                        <Setter Target="MyRightMenuSorta.Visibility" Value="Visible" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="32" />
                     </VisualState.Setters>
 
@@ -103,8 +105,9 @@
                     />
 
             <TextBlock Name="TitleOfGrocer"
-                   RelativePanel.AlignHorizontalCenterWithPanel="True"
-                   Text="Essential Grocer" FontSize="32" FontWeight="ExtraBold"/>
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Essential Grocer"
+                  FontSize="32" FontWeight="ExtraBold"/>
+            <!-- Text="Essential Grocer" -->
 
             <Button Name="CategoryButton" 
                     RelativePanel.AlignRightWithPanel="True"
@@ -115,7 +118,7 @@
                     />
 
         </RelativePanel>
-
+        
         <SplitView 
                    
                    Name="MySplitView"
@@ -123,6 +126,7 @@
                    
                    CompactPaneLength="0"
                      OpenPaneLength="225"
+                
                    >
             <SplitView.Pane>
                 <ListBox SelectionMode="Single" 
@@ -200,6 +204,8 @@
                            Need it?
                         </TextBlock>
                         <StackPanel Grid.Column="0" Grid.Row="1" Background="CadetBlue">
+                           
+
                             <Button  Name="Undo" Tapped="Undo_Click"   FontSize="18" Margin="18,8,0,0"    Background="Transparent"  >
                                 <Button.Content>
                                     <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="Aquamarine"  Padding="5" CornerRadius="15">
@@ -213,6 +219,7 @@
                             </Button>
 
                             <ListView 
+                                
                                 ItemsSource="{x:Bind GroceriesToGet, Mode=OneWay}"
                                 Name="GroceryStoreToGetList"
                                 ItemClick="GroceryStoreToGetList_ItemClick"

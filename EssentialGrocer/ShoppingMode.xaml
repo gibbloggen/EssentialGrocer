@@ -6,7 +6,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:data="using:EssentialGrocer.Model" 
-    mc:Ignorable="d" 
+    mc:Ignorable="d"
+    SizeChanged="MainPage_SizeChanged"
 
  
      >
@@ -39,8 +40,8 @@
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="false" />
-                        <Setter Target="GottenGroceriesList.Height" Value="715" />
-                        <Setter Target="GettingGroceriesList.Height" Value="715" />
+                       <!-- <Setter Target="GottenGroceriesList.Height" Value="715" />
+                        <Setter Target="GettingGroceriesList.Height" Value="715" />-->
                         <Setter Target="TitleOfGrocer.FontSize" Value="26" />
                     </VisualState.Setters>
 
@@ -55,8 +56,8 @@
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="false" />
-                        <Setter Target="GottenGroceriesList.Height" Value="455" />
-                        <Setter Target="GettingGroceriesList.Height" Value="455" />
+                       <!-- <Setter Target="GottenGroceriesList.Height" Value="455" />
+                        <Setter Target="GettingGroceriesList.Height" Value="455" />-->
                         <Setter Target="TitleOfGrocer.FontSize" Value="26" />
                     </VisualState.Setters>
 
@@ -71,8 +72,8 @@
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="Inline" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="true" />
-                        <Setter Target="GottenGroceriesList.Height" Value="800" />
-                        <Setter Target="GettingGroceriesList.Height" Value="825" />
+                        <!--<Setter Target="GottenGroceriesList.Height" Value="800" />
+                        <Setter Target="GettingGroceriesList.Height" Value="825" />-->
                         <Setter Target="TitleOfGrocer.FontSize" Value="32" />
                     </VisualState.Setters>
 

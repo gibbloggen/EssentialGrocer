@@ -78,6 +78,40 @@ namespace EssentialGrocer
 
         }
 
+        private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+            //JL
+            double j = e.NewSize.Height;
+            if (true)
+            {
+                GottenGroceriesList.Height = j - 100;
+                GettingGroceriesList.Height = j - 100;
+               // MyRightMenuSorta.Height = j - 100;
+                MySplitView.Height = j - 37;
+            }
+            //else MySplitView.Height = 1000;
+
+
+            /* SetterBase q = new SetterBase(    ;
+           q.SetValue(GroceryStore.Height., e.NewSize.Height - 145);
+           Phone.Setters.Add("SetterBase item")
+
+           if (e.NewSize.Width > 700)
+           {
+               MySplitView.IsPaneOpen = true;
+
+
+           }
+           else
+           {
+               MySplitView.IsPaneOpen = false;
+
+
+           }*/
+            return;
+
+        }
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             if (GroceryManager.CheckWindowSize(Window.Current))
