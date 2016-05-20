@@ -40,11 +40,11 @@
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="CompactOverlay" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="false" />
-                        <!--<Setter Target="Stacker.Background" Value="Blue" />-->
+                        <!--<Setter Target="Stacker.Background" Value="Blue" />
                         
                         <Setter Target="GroceryStore.Height" Value="715" />
                         <Setter Target="GroceryStoreToGetList.Height" Value="715" />
-                        <Setter Target="MyRightMenuSorta.Height" Value="755" />
+                        <Setter Target="MyRightMenuSorta.Height" Value="755" />-->
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Collapsed" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="26" />
                     </VisualState.Setters>
@@ -78,11 +78,11 @@
                     <VisualState.Setters>
                         <Setter Target="MySplitView.DisplayMode" Value="Inline" />
                         <Setter Target="MySplitView.IsPaneOpen" Value="true" />
-                        <!-- <Setter Target="Stacker.Background" Value="Red" />-->
+                        <!-- <Setter Target="Stacker.Background" Value="Red" />
                         <Setter Target="GroceryStore.Height" Value="800" />
                         <Setter Target="GroceryStoreToGetList.Height" Value="800" />
                         
-                        <Setter Target="MyRightMenuSorta.Height" Value="825" />
+                        <Setter Target="MyRightMenuSorta.Height" Value="825" />-->
                         <Setter Target="MyRightMenuSorta.Visibility" Value="Visible" />
                         <Setter Target="TitleOfGrocer.FontSize" Value="32" />
                     </VisualState.Setters>

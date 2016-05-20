@@ -1,1 +1,1 @@
-MainPackage=C:\GitHub\EssentialGrocer\EssentialGrocer\bin\ARM\Release\Upload\EssentialGrocer_1.3.1.0_ARM.appx
+MainPackage=C:\GitHub\EssentialGrocer\EssentialGrocer\bin\ARM\Release\Upload\EssentialGrocer_1.3.2.0_ARM.appx

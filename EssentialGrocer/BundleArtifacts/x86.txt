@@ -1,2 +1,2 @@
-MainPackage=C:\GitHub\EssentialGrocer\EssentialGrocer\bin\x86\Release\EssentialGrocer_1.3.1.0_x86.appx
-SymbolPackage=C:\GitHub\EssentialGrocer\EssentialGrocer\AppPackages\EssentialGrocer_1.3.1.0_Test\EssentialGrocer_1.3.1.0_x86.appxsym
+MainPackage=C:\GitHub\EssentialGrocer\EssentialGrocer\bin\x86\Release\EssentialGrocer_1.3.2.0_x86.appx
+SymbolPackage=C:\GitHub\EssentialGrocer\EssentialGrocer\AppPackages\EssentialGrocer_1.3.2.0_Test\EssentialGrocer_1.3.2.0_x86.appxsym
