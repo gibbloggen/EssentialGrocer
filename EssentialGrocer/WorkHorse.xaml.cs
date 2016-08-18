@@ -269,7 +269,13 @@ namespace EssentialGrocer
 
                 DataTransferManager.ShowShareUI();
             }
-           
+            else if (ManageGroups.IsSelected)
+            {
+
+                Frame Switcherooni = (Frame)Parent;
+                Switcherooni.Content = new ManageGroups();
+            }
+
             MySplitView.IsPaneOpen = !GroceryManager.CheckWindowSize(Window.Current);
 
 

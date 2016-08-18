@@ -168,6 +168,13 @@
                             <TextBlock FontSize="24" Margin="20,5,0,0">Shopping</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
+
+                    <ListBoxItem Name="ManageGroups">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock  FontSize="36" Text="^" />
+                            <TextBlock FontSize="24" Margin="20,5,0,0">Adj Groups</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content >
