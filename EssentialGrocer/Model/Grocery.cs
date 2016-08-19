@@ -133,6 +133,36 @@ namespace EssentialGrocer.Model
        
         }
 
+        public static ObservableCollection<string> GetGroups()
+        {
+            ObservableCollection<string> Groups = new ObservableCollection<string>();
+            Groups.Add("Meat");
+            Groups.Add("Diary");
+            Groups.Add("Cheese");
+            Groups.Add("Produce");
+            Groups.Add("Frozen");
+            Groups.Add("Paper");
+            Groups.Add("Whatever");
+            Groups.Add("Jarred/Canned");
+
+            Groups = new ObservableCollection<string>(Groups.OrderBy(p => p));
+            return Groups;
+
+        }
+
+
+       public static ObservableCollection<string> OrderThoseGroups( ObservableCollection<string> orderThoseGroups)
+        {
+            ObservableCollection<string> temp;
+            temp =  new ObservableCollection<string>(orderThoseGroups.OrderBy(p => p));
+            orderThoseGroups.Clear();
+            foreach (string j in temp) orderThoseGroups.Add(j);
+            return orderThoseGroups;
+
+
+
+        }
+
         // GroceryManager.UpdateToGetList(GroceriesToGet);
 
         public async static void UpdateToGetList(ObservableCollection<Grocery> ToGetList)

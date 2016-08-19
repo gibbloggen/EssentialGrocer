@@ -202,8 +202,60 @@
                                 ItemTemplate="{StaticResource GroceryListDataTemplate}"
                                  >
                             </ListView>-->
+                            
+                                <Button  Name="WhatToAdd" Tapped="MakeAddGroupFlyout"   FontSize="18" Margin="18,8,0,0"   Foreground="White" Background="Transparent"  >
 
-                        </StackPanel>
+
+                                    <Button.Content>
+                                        <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FFE03737"  Padding="5" CornerRadius="15">
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="22" Text="&#xE710;" Margin="10,5,10,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
+                                                <TextBlock Name="AddCategoryText" FontSize ="18" Text="Add A New Group" Margin="10,5,25,5" Foreground="Aquamarine" FontWeight="ExtraBold"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </Button.Content>
+
+
+
+
+
+                                    <Button.Flyout>
+                                        <Flyout x:Name="AddToTheList">
+                                            <StackPanel Orientation="Vertical">
+
+                                                <StackPanel Orientation="Horizontal">
+
+                                                    <TextBlock Margin="20,5,20,0">New Item</TextBlock>
+                                                    <TextBox Name="StoreGroupDescription" Width="208" PlaceholderText="New Group"  Background="Transparent" />
+
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+
+                                                    <Button  FontFamily="Segoe MDL2 Assets" FontSize="22" Tapped="AddToGroupList" Margin="72,10,20,10" Background="Transparent">
+                                                        <Button.Content>
+                                                            <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FF32AC25"  Padding="5" CornerRadius="15">
+                                                                <TextBlock>&#xE710;</TextBlock>
+                                                            </Border>
+                                                        </Button.Content>
+                                                    </Button>
+                                                    <Button FontFamily="Segoe MDL2 Assets" FontSize="22" Tapped="CancelGroupFlyout" Margin="20,10,20,10" Background="Transparent">
+                                                        <Button.Content>
+                                                            <Border BorderBrush="SlateBlue" BorderThickness="1,1,1,1" Background="#FFDC0E0E"  Padding="5" CornerRadius="15">
+                                                                <TextBlock >&#xE711;</TextBlock>
+                                                            </Border>
+                                                        </Button.Content>
+                                                    </Button>
+                                                </StackPanel>
+                                            </StackPanel>
+
+
+                                        </Flyout>
+                                    </Button.Flyout>
+
+                                </Button>
+
+                            </StackPanel>
 
                     </Grid>
                 </StackPanel>

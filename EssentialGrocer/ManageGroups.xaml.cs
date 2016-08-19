@@ -19,17 +19,22 @@ using Windows.UI.Xaml.Navigation;
 
 namespace EssentialGrocer
 {
+    using EssentialGrocer.Model;
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class ManageGroups : Page
     {
-        public ObservableCollection<string> CurrentGroupsCollection = new ObservableCollection<string>();
-        public ObservableCollection<string> CurrentGroupsHolder = new ObservableCollection<string>();
+        public ObservableCollection<string> CurrentGroupsCollection;   // = new ObservableCollection<string>();
+        public ObservableCollection<string> CurrentGroupsHolder;  // = new ObservableCollection<string>();
 
         public ManageGroups()
         {
             this.InitializeComponent();
+            CurrentGroupsCollection = GroceryManager.GetGroups();
+            CurrentGroupsHolder = GroceryManager.GetGroups();
+
+            /*
             CurrentGroupsCollection.Add("Produce");
             CurrentGroupsCollection.Add("Meat");
             CurrentGroupsCollection.Add("Deli");
@@ -42,7 +47,7 @@ namespace EssentialGrocer
             CurrentGroupsHolder.Add("Deli");
             CurrentGroupsHolder.Add("Cheese");
             CurrentGroupsHolder.Add("Jarred/Canned");
-            CurrentGroupsHolder.Add("Pasta/Noodles");
+            CurrentGroupsHolder.Add("Pasta/Noodles");*/
         }
         private void MainPage_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -143,6 +148,31 @@ namespace EssentialGrocer
             }
            // CurrentGroupsCollection.UpdateToGetList(GroceriesToGet);
 
+        }
+
+        private void MakeAddGroupFlyout(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void AddToGroupList(object sender, TappedRoutedEventArgs e)
+        {
+            if (StoreGroupDescription.Text.Length == 0) return;
+            CurrentGroupsCollection.Add(StoreGroupDescription.Text);
+            // CurrentGroupsCollection = new ObservableCollection<string>(CurrentGroupsCollection.OrderBy(p => p));
+            //CurrentGroupsCollection.OrderBy(p => p);
+
+
+            CurrentGroupsCollection = GroceryManager.OrderThoseGroups(CurrentGroupsCollection);
+
+            StoreGroupDescription.Text = "";
+            AddToTheList.Hide();
+        }
+
+        private void CancelGroupFlyout(object sender, TappedRoutedEventArgs e)
+        {
+            StoreGroupDescription.Text = "";
+            AddToTheList.Hide();
         }
     }
    
