@@ -125,15 +125,16 @@
                             <TextBlock FontSize="24" Margin="20,0,0,0">Add Group</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Name="DeleteGroup">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text=" &#xE711;" />
-                            <TextBlock FontSize="24" Margin="20,0,0,0">DeleteGroup</TextBlock>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem Name="CancelChanges">
+                    <ListBoxItem Name="UndoChanges">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text=" &#xE7A7;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Undo Changes</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                   
+                    <ListBoxItem Name="CancelChanges">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text=" &#xE894; " />
                             <TextBlock FontSize="24" Margin="20,0,0,0">CancelChanges</TextBlock>
                         </StackPanel>
                     </ListBoxItem>
@@ -185,7 +186,14 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Background="CadetBlue">
-
+                            <ListView 
+                                ItemsSource="{x:Bind CurrentGroupsCollection,Mode=OneWay}"
+                                Name="CurrentGroups"
+                                ItemClick="CurrentGroups_ItemClick"
+                                IsItemClickEnabled="True" 
+                                FontSize="64" FontFamily="Times New Roman" FontWeight="Medium"
+                                 >
+                            </ListView>
                             <!-- <ListView 
                                 ItemsSource="{x:Bind GottenGroceries,Mode=OneWay}"
                                 Name="GottenGroceriesList"
