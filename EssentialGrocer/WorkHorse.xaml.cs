@@ -270,6 +270,8 @@ namespace EssentialGrocer
             }
             else if (ShoppingMode.IsSelected)
             {
+                //any option that changes frame, you have to deregister the printing
+                if (printHelper != null) printHelper.UnregisterForPrinting();
 
                 Frame Switcherooni = (Frame)Parent;
                 Switcherooni.Content = new ShoppingMode();
@@ -308,6 +310,8 @@ namespace EssentialGrocer
             }
             else if (ManageGroups.IsSelected)
             {
+                //any option that changes frame, you have to deregister the printing
+                if (printHelper != null) printHelper.UnregisterForPrinting();
 
                 Frame Switcherooni = (Frame)Parent;
                 Switcherooni.Content = new ManageGroups();
