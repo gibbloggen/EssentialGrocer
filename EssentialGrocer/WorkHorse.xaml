@@ -94,7 +94,7 @@
 
         </VisualStateManager.VisualStateGroups>
 
-
+        <Canvas x:Name="PrintCanvas" Opacity="0"/>
         <RelativePanel  Background="Aquamarine" >
             <Button Name="HamburgerButton" 
                     RelativePanel.AlignLeftWithPanel="True"
@@ -169,6 +169,12 @@
                         </StackPanel>
                     </ListBoxItem>
 
+                    <ListBoxItem Name="Print">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Height="28" Width=" 32"  Source="Assets\Print.png" />
+                            <TextBlock FontSize="24" Margin="20,5,0,0">Print</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
                     <ListBoxItem Name="ManageGroups">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock  FontSize="36" Text="^" />

@@ -40,6 +40,7 @@ using EssentialGrocer.Model;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
+using System.Linq;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -63,6 +64,8 @@ namespace EssentialGrocer
 
         public ObservableCollection<string> DogEaredCollection;
 
+        private PrintHelper printHelper;
+
         private Grocery UndoGrocery;
         private static string j = "";
 
@@ -85,6 +88,13 @@ namespace EssentialGrocer
 
             GroceryManager.AsynchInitializingGroceryCollection(Groceries);
             GroceryManager.AsynchInitializingGroceryToGet(GroceriesToGet);
+
+          
+            // Initialize print content for this scenario
+
+
+           
+
         }
 
 
@@ -268,6 +278,33 @@ namespace EssentialGrocer
             {
 
                 DataTransferManager.ShowShareUI();
+            }
+            else if (Print.IsSelected)
+            {
+                XDocument MasterListX = GroceryManager.ShoppingListX;
+                var q = from b in MasterListX.Descendants("product")
+                        select new Grocery
+                        {
+                            UPC_Code = (string)b.Element("UPC_Code").Value,
+                            Description = (string)b.Element("Description").Value,
+                            Isle = (string)b.Element("Isle").Value,
+                        };
+
+               q =  q.OrderBy(p => p.Description).OrderBy(p => p.Isle);
+                ObservableCollection<Grocery> j = new  ObservableCollection<Grocery>();
+                foreach (Grocery z in q)
+                    j.Add(z);
+                
+
+                if (printHelper != null) printHelper.UnregisterForPrinting();
+                printHelper = new PrintHelper(this);
+                //printHelper.RegisterForPrinting();
+
+                printHelper.RegisterForPrinting();
+                printHelper.PreparePrintContent(new Radio(j));
+                await printHelper.ShowPrintUIAsync();
+                
+
             }
             else if (ManageGroups.IsSelected)
             {
