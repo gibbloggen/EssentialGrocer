@@ -39,183 +39,17 @@ namespace EssentialGrocer
             MakeThePrintOut();
 
 
-            /*
-            RichTextBlock gutOne = new RichTextBlock();
-            gutOne.Foreground = new SolidColorBrush(Windows.UI.Colors.Black);
-            gutOne.FontSize = 18;
-            // gutOne.OverflowContentTarget = FirstLinkedContainer;
-            gutOne.FontFamily = new FontFamily("Courier New");
-            //gutOne.Tag = "Grid.Row=\"1\" Grid.ColumnSpan=\"2\" ";
-            gutOne.VerticalAlignment = VerticalAlignment.Top;
-            gutOne.HorizontalAlignment = HorizontalAlignment.Left;
-
-            Paragraph para = new Paragraph();
-            // para.Margin = new Thickness(5);
-
-            Run ran = new Run();
-            ran.Text = "     Meats";
-            para.Inlines.Add(ran);
-            gutOne.Blocks.Add(para);
-
-            Paragraph para2 = new Paragraph();
-            //  para2.Margin = new Thickness(65);
-
-            Run ran2 = new Run();
-            ran2.Text = "          [] Pork Butt                                                             [] Hamburger";
-            para2.Inlines.Add(ran2);
-
-
-
-
-            gutOne.Blocks.Add(para2);
-
-
-            ContentStack.Children.Add(gutOne);*/
-
+         
         }
-       /* public void FillGroceries()
-        {
-            Grocery j = new Grocery();
-            j.Isle = "Produce";
-            j.Item = "Apple";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Produce";
-            j.Item = "Avacodo";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Produce";
-            j.Item = "Bannana";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Produce";
-            j.Item = "Cantaloupe";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Produce";
-            j.Item = "Corn";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Produce";
-            j.Item = "Edamame";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Produce";
-            j.Item = "Kale";
-            Grocs.Add(j);
-
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Butter";
-            Grocs.Add(j);
-
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Cottage Cheese";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Chocolate Milk";
-            Grocs.Add(j);
-
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Half-N-Half";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Heavy Cream";
-            Grocs.Add(j);
-
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Eggs";
-            Grocs.Add(j);
-
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Skim Milk";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Sour Cream";
-            Grocs.Add(j);
-
-            j = new Grocery();
-            j.Isle = "Dairy";
-            j.Item = "Yogurt";
-            Grocs.Add(j);
-
-
-
-
-            j = new Grocery();
-            j.Isle = "Paper";
-            j.Item = "Napkins";
-            Grocs.Add(j);
-
-
-
-        }*/
+       
         private void MakeThePrintOut()
         {
 
 
-            RichTextBlock gutOne = initBlock();
-            PopulateBlock(gutOne);
-            ContentStack.Children.Add(gutOne);
-            /* RichTextBlock gutOne = new RichTextBlock();
-             gutOne.Foreground = new SolidColorBrush(Windows.UI.Colors.Black);
-             gutOne.FontSize = 18;
-             gutOne.OverflowContentTarget = FirstLinkedContainer;
-             gutOne.FontFamily = new FontFamily("Courier New");
-             gutOne.VerticalAlignment = VerticalAlignment.Top;
-             gutOne.HorizontalAlignment = HorizontalAlignment.Left;
-
-     */
-
-
-
-
-            /*
-
-                        Paragraph para = new Paragraph();
-                        // para.Margin = new Thickness(5);
-
-                        Run ran = new Run();
-                        ran.Text = "     Meats";
-                        para.Inlines.Add(ran);
-                        gutOne.Blocks.Add(para);
-
-                        Paragraph para2 = new Paragraph();
-                        //  para2.Margin = new Thickness(65);
-
-                        Run ran2 = new Run();
-                        ran2.Text = "        [] Pork Butt                 [] Hamburger";
-                        para2.Inlines.Add(ran2);
-
-
-
-
-                        gutOne.Blocks.Add(para2);
-
-                */
-
-            // TextContent. = gutOne;
+           
+            PopulateBlock(TextContent);
+            
+            
         }
         private RichTextBlock initBlock()
         {
@@ -230,7 +64,7 @@ namespace EssentialGrocer
             return gutInitBlock;
 
         }
-        private void PopulateBlock( RichTextBlock Blocker)
+        private void PopulateBlock(RichTextBlock Blocker)
         {
 
 
@@ -241,7 +75,7 @@ namespace EssentialGrocer
 
             string CurrentIsle = "None";
 
-            foreach( Grocery j in Grocs)
+            foreach (Grocery j in Grocs)
             {
                 if (j.Isle != CurrentIsle)
                 {
@@ -255,49 +89,35 @@ namespace EssentialGrocer
                     firstItem = true;
                     Paragraph paraIsle = new Paragraph();
                     Run paraRan = new Run();
-                    paraRan.Text = "     " + j.Isle;
+                    paraRan.Text = "  " + j.Isle;
                     paraIsle.Inlines.Add(paraRan);
                     Blocker.Blocks.Add(paraIsle);
 
 
                 }
-               if (firstItem)
+                if (firstItem)
                 {
                     paraItem = new Paragraph();
                     itemRun = new Run();
                     itemRun.Text = "        [] " + j.Description;
                     firstLength = j.Description.Length;
                     firstItem = false;
-                } else
+                }
+                else
                 {
                     firstItem = true;
-                    string s = new string(' ', 30 - firstLength);
-                    itemRun.Text += s + "[] " +  j.Description;
+                    string s = new string(' ', 32 - firstLength);
+                    itemRun.Text += s + "[] " + j.Description;
                     paraItem.Inlines.Add(itemRun);
                     Blocker.Blocks.Add(paraItem);
 
                 }
 
-               
-                //  para.Inlines.Add(ran);
-                // Blocker.Blocks.Add(para);
-
-              /*  Paragraph para2 = new Paragraph();
-                    //  para2.Margin = new Thickness(65);
-
-                    Run ran2 = new Run();
-                    ran2.Text = "        [] Pork Butt                 [] Hamburger";
-                    para2.Inlines.Add(ran2);
-
-    */
-
-
-                  //  Blocker.Blocks.Add(para2);
 
 
 
 
-                }
+            }
             if (!firstItem)
             {
                 paraItem.Inlines.Add(itemRun);
@@ -310,8 +130,12 @@ namespace EssentialGrocer
 
 
 
-           
-        }
+
+
+
+
 
     }
+
+}
 
