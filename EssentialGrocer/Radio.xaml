@@ -26,7 +26,7 @@
                     <Paragraph>Essential Grocer Shopping List</Paragraph>
                 </RichTextBlock>
             </StackPanel>
-            <RichTextBlock Foreground="Black" x:Name="SdkTitle" FontSize="22" FontWeight="Bold" FontFamily="Segoe UI" >
+            <RichTextBlock Foreground="Black" x:Name="SdkTitle"  FontSize="22" FontWeight="Bold" FontFamily="Segoe UI" >
                 <Paragraph></Paragraph>
             </RichTextBlock>
         </StackPanel>
